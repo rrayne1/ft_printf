@@ -1,34 +1,44 @@
+C = gcc
+
 NAME = libftprintf.a
-SRC = ft_printf.c check.c types.c utils.c numbers.c floats.c
 
-HEADER = ft_printf.h
+FLAGS = -Wall -Wextra -Werror
 
-OBJ	= $(SRC:%.c=%.o)
+LIBFT = libft
 
-CFLAGS = -Wall -Wextra -Werror -c
+DIR_S = src
 
-LIBFT = libft/libft.a
+DIR_O = obj
 
-LIB_DIR = libft
+HEADER = includes
 
-INC_DIR = . libft
+SOURCES = ft_printf.c check.c types.c utils.c numbers.c floats.c
+
+SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
+
+OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
 all: $(NAME)
 
-$(OBJ) : %.o : %.c
-	gcc $(FLAG) -c $<
-
-$(NAME): $(OBJ)	
-	make -C $(LIB_DIR)
-	ar rc $(NAME) $(OBJ) $(LIBFT)
+$(NAME): $(OBJS)
+	make -C $(LIBFT)
+	cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
+$(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)/ft_printf.h
+	mkdir -p obj
+	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
+
 clean:
-	rm -rf $(OBJ)
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
+	@make clean -C $(LIBFT)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: fclean re all clean
