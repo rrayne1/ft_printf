@@ -3,10 +3,14 @@
 int 		start(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
 	init_flags(tFlags);
-	check_flags(format, tFlags);
-	check_types(format, tFlags);
-	check_format(ft_printf_list, format, tFlags);
-	(*format)++;
+	while(tFlags->count == -1)
+	{
+        ++(*format);
+        check_flags(format, tFlags);
+        check_types(format, tFlags);
+        check_format(ft_printf_list, format, tFlags);
+    }
+    (*format)++;
 	return (tFlags->total);
 }
 

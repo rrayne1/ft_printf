@@ -19,6 +19,7 @@ int		type_s(va_list ft_print_list, t_flags *tFlags)
 	if (!tFlags->width || !tFlags->minus)
 		ft_write((s) ? s : ("null"), tFlags->total);
 	tFlags->total += width;
+	tFlags->count += 1;
 	return(tFlags->total);
 }
 
@@ -40,6 +41,7 @@ int 	type_c(va_list ft_printf_list, t_flags *tFlags)
 	if (!tFlags->width || !tFlags->minus)
 		ft_write((c) ? &c : ("null"),tFlags->total);
 	tFlags->total += width;
+    tFlags->count += 1;
 	return(tFlags->total);
 }
 
@@ -59,6 +61,7 @@ int 	type_d(va_list ft_printf_list, t_flags *tFlags)
 		tFlags->neg = 1;
 	}
 	ft_display_d(nb, size, tFlags);
+    tFlags->count += 1;
 	return (tFlags->total);
 }
 
@@ -72,5 +75,6 @@ int 	type_f(va_list ft_printf_list, t_flags *tFlags)
 	tFlags->total = ft_float_to_string(va_arg(ft_printf_list, double), &nb, tFlags);
 	ft_display_f(nb, tFlags);
 	free(nb);
+    tFlags->count += 1;
 	return (tFlags->total);
 }

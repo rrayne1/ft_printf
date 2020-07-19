@@ -26,19 +26,20 @@ void 	check_width(char **format, t_flags *tFlags)
 }
 int		check_flags(char **format, t_flags *tFlags)
 {
-	if (*(*format) == 32)
-		tFlags->space = 1;
-	else if (*(*format) == 43)
-		tFlags->plus = 1;
-	else if (*(*format) == 45)
-		tFlags->minus = 1;
-	else if (*(*format) == '0' && *(*format - 1) != 46)
-		tFlags->zero = 0;
-	else if (*(*format) == 35)
-		tFlags->hash = 1;
-	if ((ft_isdigit(*(*format))) == 1)
-		check_width(format, tFlags);
-	return (0);
+    if (*(*format) == 32)
+        tFlags->space = 1;
+    if (*(*format) == 43)
+        tFlags->plus = 1;
+    if (*(*format) == 45)
+        tFlags->minus = 1;
+    if (*(*format) == '0' && *(*format - 1) != 46)
+        tFlags->zero = 0;
+    if (*(*format) == 35)
+        tFlags->hash = 1;
+    if ((ft_isdigit(*(*format))) == 1)
+        check_width(format, tFlags);
+    (*format)++;
+	return (1);
 }
 
 void 	check_types(char **format, t_flags *tFlags)
@@ -53,16 +54,25 @@ void 	check_types(char **format, t_flags *tFlags)
 		tFlags->type = TYPE_LL;
 }
 
+int   ft_print_percent(t_flags *tFlags)
+{
+    ft_write("%", 1);
+    tFlags->total++;
+    tFlags->count += 1;
+    return (tFlags->total);
+}
 
 int		check_format(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
-	if (*(*format) == 's')
-		type_s(ft_printf_list, tFlags);
-	if (*(*format) == 'c')
-		type_c(ft_printf_list, tFlags);
-	if (*(*format) == 'd')
-		type_d(ft_printf_list, tFlags);
-	if (*(*format) == 'f')
-		type_f(ft_printf_list, tFlags);
-	return (tFlags->total);
+    if (*(*format) == '%')
+        ft_print_percent(tFlags);
+    if (*(*format) == 's')
+        type_s(ft_printf_list, tFlags);
+    if (*(*format) == 'c')
+        type_c(ft_printf_list, tFlags);
+    if (*(*format) == 'd')
+        type_d(ft_printf_list, tFlags);
+    if (*(*format) == 'f')
+        type_f(ft_printf_list, tFlags);
+    return (1);
 }
