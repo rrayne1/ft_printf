@@ -33,11 +33,12 @@ int 				start(va_list ft_printf_list, char **format, \
 							t_flags *tFlags);
 
 void 				init_flags(t_flags *tFlags);
-int				check_flags(char **format, t_flags *tFlags);
+int					check_flags(char **format, t_flags *tFlags);
 void 				check_types(char **format, t_flags *tFlags);
 int					check_format(va_list ft_printf_list, char **format, \
 									t_flags *tFlags);
 
+void 				check_total(char *s, t_flags *tFlags);
 int					type_s(va_list ft_print_list, t_flags *tFlags);
 int 				type_c(va_list ft_printf_list, t_flags *tFlags);
 int 				type_d(va_list ft_printf_list, t_flags *tFlags);
@@ -51,7 +52,7 @@ void 				ft_putnbr_base(uintmax_t nb, char *str, uintmax_t length);
 
 int					ft_infinity(char **s);
 double				ft_modulo(double nb, int *size);
-void				ft_full_before(char **s, int *i, double modulo, double *nb);
+void				ft_full(char **s, int *i, double modulo, double *nb);
 int 				ft_full_after(char **s, int *i, t_flags *tFlags, double nb);
 int 				ft_float_to_string(double nb, char **s, t_flags *tFlags);
 
@@ -60,5 +61,4 @@ void 				ft_display_d(intmax_t nb, int size, t_flags *tFlags);
 int 				ft_write(void *s, int size);
 void 				ft_write_char(char c, int size);
 int 				ft_print_str(char **format);
-
 #endif

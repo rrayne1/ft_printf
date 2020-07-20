@@ -5,84 +5,24 @@ int main(void)
 	int a = 0;
 	int b = 0;
 
-	a = printf("%.2s is a string", "this");
+	a = printf("%0+5d", 42);
         printf("\n");
-        b = ft_printf("%.2s is a string", "this");
+        b = ft_printf("%0+5d", 42);
         printf("\n %d %d\n", a, b);
 
-	a = printf("%5.2s is a string", "this");
+	a = printf("%0+5d", -42);
         printf("\n");
-        b = ft_printf("%5.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-
-	a = printf("%10s is a string", "");
-        printf("\n");
-        b = ft_printf("%10s is a string", "");
-        printf("\n %d %d\n", a, b);
-
-	a = printf("%.2s is a string", "");
-        printf("\n");
-        b = ft_printf("%.2s is a string", "");
+        b = ft_printf("%0+5d", -42);
         printf("\n %d %d\n", a, b);
         
-        a = printf("%5.2s is a string", "");
+        a = printf("%-05d", 42);
         printf("\n");
-        b = ft_printf("%5.2s is a string", "");
+        b = ft_printf("%-05d", 42);
         printf("\n %d %d\n", a, b);
         
-        a = printf("%-10s is a string", "this");
+        a = printf("%-05d", -42);
         printf("\n");
-        b = ft_printf("%-10s is a string", "this");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-.2s is a string", "this");
-        printf("\n");
-        b = ft_printf("%-.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-5.2s is a string", "this");
-        printf("\n");
-        b = ft_printf("%-5.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-10s is a string", "");
-        printf("\n");
-        b = ft_printf("%-10s is a string", "");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-.2s is a string", "");
-        printf("\n");
-        b = ft_printf("%-.2s is a string", "");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-5.2s is a string", "");
-        printf("\n");
-        b = ft_printf("%-5.2s is a string", "");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%s %s", "this", "is");
-        printf("\n");
-        b = ft_printf("%s %s", "this", "is");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%s %s %s", "this", "is", "a");
-        printf("\n");
-        b = ft_printf("%s %s %s", "this", "is", "a");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%s %s %s %s", "this", "is", "a", "multi");
-        printf("\n");
-        b = ft_printf("%s %s %s %s", "this", "is", "a", "multi");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string");
-        printf("\n");
-        b = ft_printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%s%s%s%s%s", "this", "is", "a", "multi", "string");
-        printf("\n");
-        b = ft_printf("%s%s%s%s%s", "this", "is", "a", "multi", "string");
+        b = ft_printf("%-05d", -42);
         printf("\n %d %d\n", a, b);
         
         return (0);

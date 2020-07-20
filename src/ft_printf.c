@@ -3,7 +3,7 @@
 int 		start(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
 	init_flags(tFlags);
-	while(tFlags->count == -1)
+	while(tFlags->count == 0)
 	{
         check_flags(&(*format), tFlags);
         check_types(&(*format), tFlags);
@@ -22,7 +22,6 @@ int			ft_printf(const char *format, ...)
 
 	res = 0;
 	tFlags = (t_flags *)malloc(sizeof(t_flags));
-	tFlags->count = -1;
 	va_start(ft_printf_list, format);
 	str = (char *)format;
 	while (*str != 0)
@@ -45,10 +44,15 @@ int     main(void)
     int a = 0;
     int b = 0;
 
-    a = printf("%.2s is a string", "");
-    printf("\n");
-    b = ft_printf("%.2s is a string", "");
-    printf("\n %d %d\n", a, b);
+	a = printf("@moulitest: %.d %.0d", 0, 0);
+	printf("\n");
+	b = ft_printf("@moulitest: %.d %.0d", 0, 0);
+	printf("\n %d %d\n", a, b);
 
-    return (0);
+	a = printf("@moulitest: %.d %.0d", 5, 5);
+	printf("\n");
+	b = ft_printf("@moulitest: %.d %.0d", 5, 5);
+	printf("\n %d %d\n", a, b);
+
+	return (0);
 }

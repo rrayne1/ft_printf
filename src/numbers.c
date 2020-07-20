@@ -27,7 +27,10 @@ int		ft_getsize(intmax_t n)
 	if (n < 0)
 		len++;
 	if (n == 0)
-		return (1);
+	{
+		len = 1;
+		return (len);
+	}
 	while (n != 0)
 	{
 		n = n / 10;
@@ -40,11 +43,11 @@ int 	ft_print_width(int width, t_flags *tFlags)
 {
 	while (tFlags->width > width)
 	{
-		if (tFlags->zero == 1)
+		if (tFlags->zero == 1 || tFlags->precision > 0)
 			ft_write(" ", 1);
-		if (tFlags->zero == 0)
+		else if (tFlags->zero == 0)
 			ft_write("0", 1);
-		width++;
+		++width;
 	}
 	return (width);
 }

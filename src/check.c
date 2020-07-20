@@ -10,6 +10,8 @@ void 	init_flags(t_flags *tFlags)
 	tFlags->precision = -1;
 	tFlags->neg = 0;
 	tFlags->space = 0;
+	tFlags->count = 0;
+	tFlags->total = 0;
 }
 void 	check_width(char **format, t_flags *tFlags)
 {

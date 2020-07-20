@@ -30,7 +30,7 @@ unistd.h
 fcntl.h
 -
 
-/home/maria/ft_printf/src/types.c
+/home/maria/ft_printf/src/utils.c
 ../includes/ft_printf.h
 /home/maria/ft_printf/includes/ft_printf.h
 
