@@ -5,16 +5,21 @@ int		type_s(va_list ft_print_list, t_flags *tFlags)
 	char 	*s;
 	int		width;
 
-	width = -1;
+	width = 0;
 	tFlags->total = 0;
 	s = va_arg(ft_print_list, char *);
-	tFlags->total = ft_strlen(s);
+	if (tFlags->precision == -1 || s == 0)
+	    tFlags->total = ft_strlen(s);
+	else if (tFlags->precision != -1)
+       tFlags->total = ft_strlen(s) - (size_t)tFlags->precision;
 	if (tFlags->width != 0)
 	{
 		if (tFlags->minus == 1)
 			ft_write(s, tFlags->total);
-		while (++width < (tFlags->width - tFlags->total))
-			ft_write(" ", 1);
+		while (width < (tFlags->width - tFlags->total)) {
+            ft_write(" ", 1);
+            ++width;
+        }
 	}
 	if (!tFlags->width || !tFlags->minus)
 		ft_write((s) ? s : ("null"), tFlags->total);

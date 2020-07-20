@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/rrayne/ft_printf/includes/ft_printf.h
+/home/maria/ft_printf/includes/ft_printf.h
 stdio.h
 -
 stdarg.h
@@ -18,9 +18,9 @@ math.h
 stdlib.h
 -
 ../libft/libft.h
-/home/rrayne/ft_printf/libft/libft.h
+/home/maria/ft_printf/libft/libft.h
 
-/home/rrayne/ft_printf/libft/libft.h
+/home/maria/ft_printf/libft/libft.h
 stdlib.h
 -
 string.h
@@ -30,7 +30,7 @@ unistd.h
 fcntl.h
 -
 
-/home/rrayne/ft_printf/src/ft_printf.c
+/home/maria/ft_printf/src/types.c
 ../includes/ft_printf.h
-/home/rrayne/ft_printf/includes/ft_printf.h
+/home/maria/ft_printf/includes/ft_printf.h
 

@@ -33,7 +33,7 @@ int 				start(va_list ft_printf_list, char **format, \
 							t_flags *tFlags);
 
 void 				init_flags(t_flags *tFlags);
-int					check_flags(char **format, t_flags *tFlags);
+int				check_flags(char **format, t_flags *tFlags);
 void 				check_types(char **format, t_flags *tFlags);
 int					check_format(va_list ft_printf_list, char **format, \
 									t_flags *tFlags);

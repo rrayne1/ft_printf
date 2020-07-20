@@ -63,7 +63,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_printf.dir/libft/ft_tolower.c.o"
   "CMakeFiles/ft_printf.dir/libft/ft_toupper.c.o"
   "CMakeFiles/ft_printf.dir/libft/get_next_line.c.o"
-  "CMakeFiles/ft_printf.dir/main.c.o"
   "CMakeFiles/ft_printf.dir/src/check.c.o"
   "CMakeFiles/ft_printf.dir/src/floats.c.o"
   "CMakeFiles/ft_printf.dir/src/ft_printf.c.o"

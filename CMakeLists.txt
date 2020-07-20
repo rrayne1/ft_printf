@@ -79,5 +79,4 @@ add_executable(ft_printf
         src/ft_printf.c
         src/numbers.c
         src/types.c
-        src/utils.c
-        main.c)
+        src/utils.c)

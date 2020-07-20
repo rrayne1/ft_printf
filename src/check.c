@@ -21,10 +21,10 @@ void 	check_width(char **format, t_flags *tFlags)
 	if(*(*format - 1) != 46)
 	{
 		tFlags->width = ft_atoi(&(*(*format)));
-		(*format) += (ft_getlen(tFlags->width));
+		(*format) += (ft_getlen(tFlags->width) - 1);
 	}
 }
-int		check_flags(char **format, t_flags *tFlags)
+int       check_flags(char **format, t_flags *tFlags)
 {
     if (*(*format) == 32)
         tFlags->space = 1;
@@ -37,9 +37,9 @@ int		check_flags(char **format, t_flags *tFlags)
     if (*(*format) == 35)
         tFlags->hash = 1;
     if ((ft_isdigit(*(*format))) == 1)
-        check_width(format, tFlags);
-    (*format)++;
-	return (1);
+        check_width(&(*format), tFlags);
+
+    return (1);
 }
 
 void 	check_types(char **format, t_flags *tFlags)

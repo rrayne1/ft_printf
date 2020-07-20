@@ -31,7 +31,7 @@ $(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)/ft_printf.h
 	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
 	@rm -rf $(DIR_O)
 	@make clean -C $(LIBFT)
 

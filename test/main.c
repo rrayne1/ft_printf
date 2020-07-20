@@ -1,53 +1,19 @@
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int main(void)
 {
 	int a = 0;
 	int b = 0;
 
-	a = printf("%.2s is a string", "this");
-        printf("\n");
-        b = ft_printf("%.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-
-	a = printf("%5.2s is a string", "this");
-        printf("\n");
-        b = ft_printf("%5.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-
-	a = printf("%10s is a string", "");
-        printf("\n");
-        b = ft_printf("%10s is a string", "");
-        printf("\n %d %d\n", a, b);
-
 	a = printf("%.2s is a string", "");
         printf("\n");
         b = ft_printf("%.2s is a string", "");
         printf("\n %d %d\n", a, b);
         
+	
         a = printf("%5.2s is a string", "");
         printf("\n");
         b = ft_printf("%5.2s is a string", "");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-10s is a string", "this");
-        printf("\n");
-        b = ft_printf("%-10s is a string", "this");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-.2s is a string", "this");
-        printf("\n");
-        b = ft_printf("%-.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-5.2s is a string", "this");
-        printf("\n");
-        b = ft_printf("%-5.2s is a string", "this");
-        printf("\n %d %d\n", a, b);
-        
-        a = printf("%-10s is a string", "");
-        printf("\n");
-        b = ft_printf("%-10s is a string", "");
         printf("\n %d %d\n", a, b);
         
         a = printf("%-.2s is a string", "");
