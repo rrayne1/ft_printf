@@ -22,7 +22,7 @@ typedef struct 		s_flags
 	char 			minus;
 	char 			hash;
 	char 			zero;
-	char 			type;
+	int 			type;
 	int 			precision;
 	int 			neg;
 	int 			total;
@@ -38,17 +38,24 @@ void 				check_types(char **format, t_flags *tFlags);
 int					check_format(va_list ft_printf_list, char **format, \
 									t_flags *tFlags);
 
-void 				check_total(char *s, t_flags *tFlags);
 int					type_s(va_list ft_print_list, t_flags *tFlags);
 int 				type_c(va_list ft_printf_list, t_flags *tFlags);
 int 				type_d(va_list ft_printf_list, t_flags *tFlags);
 int 				type_f(va_list ft_printf_list, t_flags *tFlags);
+int					type_o(va_list ft_print_list, t_flags *tFlags);
+int					type_u(va_list ft_printf_list, t_flags *tFlags);
+int					type_x(va_list ft_printf_list, t_flags *tFlags);
 
-int 				ft_get_nb(va_list ft_printf_list, t_flags *tFlags);
+void				ft_get_nb_u(va_list ft_printf_list, uintmax_t *nb, \
+									t_flags *tFlags);
+void 				ft_get_nb(va_list ft_printf_list, intmax_t *nb, \
+									t_flags *tFlags);
+
 int					ft_getsize(intmax_t n);
-int 				ft_print_width(int width, t_flags *tFlags);
-void 				ft_print_sign(t_flags *tFlags);
+void				ft_get_size_u(uintmax_t nb, uintmax_t length, int *size);
 void 				ft_putnbr_base(uintmax_t nb, char *str, uintmax_t length);
+void 				ft_precision(t_flags *tFlags, int size);
+int 				check_zero(uintmax_t nb, int *size, t_flags *tFlags);
 
 int					ft_infinity(char **s);
 double				ft_modulo(double nb, int *size);
@@ -56,9 +63,21 @@ void				ft_full(char **s, int *i, double modulo, double *nb);
 int 				ft_full_after(char **s, int *i, t_flags *tFlags, double nb);
 int 				ft_float_to_string(double nb, char **s, t_flags *tFlags);
 
+void				ft_print_width(t_flags *tFlags);
+void 				ft_print_sign(t_flags *tFlags);
+int   				ft_print_percent(t_flags *tFlags);
+int 				ft_print_str(char **format);
+
 void				ft_display_f(char *nb, t_flags *tFlags);
 void 				ft_display_d(intmax_t nb, int size, t_flags *tFlags);
+void 				ft_display_o(intmax_t nb, int size, t_flags *tFlags);
+void			 	ft_display_u(uintmax_t nb, int size, t_flags *tFlags);
+void			 	ft_display_x(uintmax_t nb, int size, t_flags *tFlags);
+
 int 				ft_write(void *s, int size);
 void 				ft_write_char(char c, int size);
-int 				ft_print_str(char **format);
+
+void 				total_str(char *s, t_flags *tFlags);
+void				total_dit(intmax_t nb, int size, t_flags *tFlags);
+
 #endif

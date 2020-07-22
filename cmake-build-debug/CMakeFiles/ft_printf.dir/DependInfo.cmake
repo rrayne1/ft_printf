@@ -69,9 +69,12 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maria/ft_printf/libft/ft_toupper.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/libft/ft_toupper.c.o"
   "/home/maria/ft_printf/libft/get_next_line.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/libft/get_next_line.c.o"
   "/home/maria/ft_printf/src/check.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/check.c.o"
+  "/home/maria/ft_printf/src/display.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/display.c.o"
   "/home/maria/ft_printf/src/floats.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/floats.c.o"
   "/home/maria/ft_printf/src/ft_printf.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/ft_printf.c.o"
   "/home/maria/ft_printf/src/numbers.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/numbers.c.o"
+  "/home/maria/ft_printf/src/print.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/print.c.o"
+  "/home/maria/ft_printf/src/total.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/total.c.o"
   "/home/maria/ft_printf/src/types.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/types.c.o"
   "/home/maria/ft_printf/src/utils.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/utils.c.o"
   )

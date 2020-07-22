@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(ft_printf C)
 
 set(CMAKE_C_STANDARD 11)
-
+set(CMAKE_C_FLAGS "-w")
 include_directories(includes)
 include_directories(libft)
 include_directories(src)
@@ -79,4 +79,7 @@ add_executable(ft_printf
         src/ft_printf.c
         src/numbers.c
         src/types.c
-        src/utils.c)
+        src/utils.c
+        src/display.c
+        src/print.c
+        src/total.c)

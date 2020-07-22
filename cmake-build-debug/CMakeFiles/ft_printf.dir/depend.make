@@ -183,6 +183,10 @@ CMakeFiles/ft_printf.dir/src/check.c.o: ../includes/ft_printf.h
 CMakeFiles/ft_printf.dir/src/check.c.o: ../libft/libft.h
 CMakeFiles/ft_printf.dir/src/check.c.o: ../src/check.c
 
+CMakeFiles/ft_printf.dir/src/display.c.o: ../includes/ft_printf.h
+CMakeFiles/ft_printf.dir/src/display.c.o: ../libft/libft.h
+CMakeFiles/ft_printf.dir/src/display.c.o: ../src/display.c
+
 CMakeFiles/ft_printf.dir/src/floats.c.o: ../includes/ft_printf.h
 CMakeFiles/ft_printf.dir/src/floats.c.o: ../libft/libft.h
 CMakeFiles/ft_printf.dir/src/floats.c.o: ../src/floats.c
@@ -194,6 +198,14 @@ CMakeFiles/ft_printf.dir/src/ft_printf.c.o: ../src/ft_printf.c
 CMakeFiles/ft_printf.dir/src/numbers.c.o: ../includes/ft_printf.h
 CMakeFiles/ft_printf.dir/src/numbers.c.o: ../libft/libft.h
 CMakeFiles/ft_printf.dir/src/numbers.c.o: ../src/numbers.c
+
+CMakeFiles/ft_printf.dir/src/print.c.o: ../includes/ft_printf.h
+CMakeFiles/ft_printf.dir/src/print.c.o: ../libft/libft.h
+CMakeFiles/ft_printf.dir/src/print.c.o: ../src/print.c
+
+CMakeFiles/ft_printf.dir/src/total.c.o: ../includes/ft_printf.h
+CMakeFiles/ft_printf.dir/src/total.c.o: ../libft/libft.h
+CMakeFiles/ft_printf.dir/src/total.c.o: ../src/total.c
 
 CMakeFiles/ft_printf.dir/src/types.c.o: ../includes/ft_printf.h
 CMakeFiles/ft_printf.dir/src/types.c.o: ../libft/libft.h

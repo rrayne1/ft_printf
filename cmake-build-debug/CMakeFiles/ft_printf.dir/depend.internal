@@ -183,6 +183,10 @@ CMakeFiles/ft_printf.dir/src/check.c.o
  /home/maria/ft_printf/includes/ft_printf.h
  /home/maria/ft_printf/libft/libft.h
  /home/maria/ft_printf/src/check.c
+CMakeFiles/ft_printf.dir/src/display.c.o
+ /home/maria/ft_printf/includes/ft_printf.h
+ /home/maria/ft_printf/libft/libft.h
+ /home/maria/ft_printf/src/display.c
 CMakeFiles/ft_printf.dir/src/floats.c.o
  /home/maria/ft_printf/includes/ft_printf.h
  /home/maria/ft_printf/libft/libft.h
@@ -195,6 +199,14 @@ CMakeFiles/ft_printf.dir/src/numbers.c.o
  /home/maria/ft_printf/includes/ft_printf.h
  /home/maria/ft_printf/libft/libft.h
  /home/maria/ft_printf/src/numbers.c
+CMakeFiles/ft_printf.dir/src/print.c.o
+ /home/maria/ft_printf/includes/ft_printf.h
+ /home/maria/ft_printf/libft/libft.h
+ /home/maria/ft_printf/src/print.c
+CMakeFiles/ft_printf.dir/src/total.c.o
+ /home/maria/ft_printf/includes/ft_printf.h
+ /home/maria/ft_printf/libft/libft.h
+ /home/maria/ft_printf/src/total.c
 CMakeFiles/ft_printf.dir/src/types.c.o
  /home/maria/ft_printf/includes/ft_printf.h
  /home/maria/ft_printf/libft/libft.h

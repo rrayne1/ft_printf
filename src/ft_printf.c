@@ -39,20 +39,15 @@ int			ft_printf(const char *format, ...)
 	return (res);
 }
 
-int     main(void)
+/*int     main(void)
 {
     int a = 0;
     int b = 0;
 
-	a = printf("@moulitest: %.d %.0d", 0, 0);
+	a = printf("%x", 42);
 	printf("\n");
-	b = ft_printf("@moulitest: %.d %.0d", 0, 0);
-	printf("\n %d %d\n", a, b);
-
-	a = printf("@moulitest: %.d %.0d", 5, 5);
-	printf("\n");
-	b = ft_printf("@moulitest: %.d %.0d", 5, 5);
+	b = ft_printf("%x", 42);
 	printf("\n %d %d\n", a, b);
 
 	return (0);
-}
+}*/

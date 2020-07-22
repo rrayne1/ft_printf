@@ -12,7 +12,7 @@ DIR_O = obj
 
 HEADER = includes
 
-SOURCES = ft_printf.c check.c types.c utils.c numbers.c floats.c
+SOURCES = ft_printf.c check.c types.c utils.c numbers.c floats.c total.c print.c display.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

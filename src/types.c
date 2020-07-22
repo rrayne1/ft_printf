@@ -1,15 +1,5 @@
 #include "../includes/ft_printf.h"
 
-void 	check_total(char *s, t_flags *tFlags)
-{
-	if (!s)
-		tFlags->total = 6;
-	else if ((ft_strlen(s)) == 0 || tFlags->precision == -1)
-		tFlags->total = ft_strlen(s);
-	else
-		tFlags->total = ft_strlen(s) - (size_t)tFlags->precision;
-}
-
 int		type_s(va_list ft_print_list, t_flags *tFlags)
 {
 	char 	*s;
@@ -18,7 +8,7 @@ int		type_s(va_list ft_print_list, t_flags *tFlags)
 	width = 0;
 	tFlags->total = 0;
 	s = va_arg(ft_print_list, char *);
-	check_total(s, tFlags);
+	total_str(s, tFlags);
 	if (tFlags->width != 0)
 	{
 		if (tFlags->minus == 1)
@@ -66,9 +56,10 @@ int 	type_d(va_list ft_printf_list, t_flags *tFlags)
 	intmax_t 	nb;
 	int			size;
 
-	nb = ft_get_nb(ft_printf_list, tFlags);
+	ft_get_nb(ft_printf_list, &nb, tFlags);
 	size = ft_getsize((intmax_t)nb);
-	tFlags->width -= size;
+	if (tFlags->width != 0)
+		tFlags->width -= size;
 	size += (nb >= 0 && (tFlags->plus || tFlags->space));
 	if (nb < 0)
 		tFlags->neg = 1;
@@ -92,5 +83,55 @@ int 	type_f(va_list ft_printf_list, t_flags *tFlags)
 	ft_display_f(nb, tFlags);
 	free(nb);
     tFlags->count += 1;
+	return (tFlags->total);
+}
+
+int		type_o(va_list ft_print_list, t_flags *tFlags)
+{
+	uintmax_t	nb;
+	int 		size;
+
+	ft_get_nb_u(ft_print_list, &nb, tFlags);
+	size = 0;
+	ft_get_size_u(nb, 8, &size);
+	if (tFlags->minus && tFlags->zero == 0)
+		tFlags->zero = 1;
+	if (tFlags->hash && (nb > 0 || tFlags->width < 0))
+		size += 1;
+	tFlags->width -= size;
+	ft_display_o(nb, size, tFlags);
+	if (tFlags->hash && nb == 0)
+		tFlags->total = 1;
+	tFlags->count += 1;
+	return (tFlags->total);
+}
+
+int		type_u(va_list ft_printf_list, t_flags *tFlags)
+{
+	uintmax_t 	nb;
+	int			size;
+
+	ft_get_nb_u(ft_printf_list, &nb, tFlags);
+	size = 0;
+	ft_get_size_u((uintmax_t)nb, 10, &size);
+	if (tFlags->width != 0)
+		tFlags->width -= size;
+	ft_display_u(nb, size, tFlags);
+	tFlags->count += 1;
+	return (tFlags->total);
+}
+
+int		type_x(va_list ft_printf_list, t_flags *tFlags)
+{
+	uintmax_t 	nb;
+	int			size;
+
+	ft_get_nb_u(ft_printf_list, &nb, tFlags);
+	size = 0;
+	ft_get_size_u((uintmax_t)nb, 10, &size);
+	if (tFlags->width != 0)
+		tFlags->width -= size;
+	ft_display_x(nb, size, tFlags);
+	tFlags->count += 1;
 	return (tFlags->total);
 }

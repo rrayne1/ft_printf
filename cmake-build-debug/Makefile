@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/114/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/121/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/114/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/121/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/maria/ft_printf/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/114/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/121/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/114/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/121/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -1878,6 +1878,33 @@ src/check.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/check.c.s
 .PHONY : src/check.c.s
 
+src/display.o: src/display.c.o
+
+.PHONY : src/display.o
+
+# target to build an object file
+src/display.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display.c.o
+.PHONY : src/display.c.o
+
+src/display.i: src/display.c.i
+
+.PHONY : src/display.i
+
+# target to preprocess a source file
+src/display.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display.c.i
+.PHONY : src/display.c.i
+
+src/display.s: src/display.c.s
+
+.PHONY : src/display.s
+
+# target to generate assembly for a file
+src/display.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display.c.s
+.PHONY : src/display.c.s
+
 src/floats.o: src/floats.c.o
 
 .PHONY : src/floats.o
@@ -1958,6 +1985,60 @@ src/numbers.s: src/numbers.c.s
 src/numbers.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/numbers.c.s
 .PHONY : src/numbers.c.s
+
+src/print.o: src/print.c.o
+
+.PHONY : src/print.o
+
+# target to build an object file
+src/print.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/print.c.o
+.PHONY : src/print.c.o
+
+src/print.i: src/print.c.i
+
+.PHONY : src/print.i
+
+# target to preprocess a source file
+src/print.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/print.c.i
+.PHONY : src/print.c.i
+
+src/print.s: src/print.c.s
+
+.PHONY : src/print.s
+
+# target to generate assembly for a file
+src/print.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/print.c.s
+.PHONY : src/print.c.s
+
+src/total.o: src/total.c.o
+
+.PHONY : src/total.o
+
+# target to build an object file
+src/total.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/total.c.o
+.PHONY : src/total.c.o
+
+src/total.i: src/total.c.i
+
+.PHONY : src/total.i
+
+# target to preprocess a source file
+src/total.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/total.c.i
+.PHONY : src/total.c.i
+
+src/total.s: src/total.c.s
+
+.PHONY : src/total.s
+
+# target to generate assembly for a file
+src/total.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/total.c.s
+.PHONY : src/total.c.s
 
 src/types.o: src/types.c.o
 
@@ -2217,6 +2298,9 @@ help:
 	@echo "... src/check.o"
 	@echo "... src/check.i"
 	@echo "... src/check.s"
+	@echo "... src/display.o"
+	@echo "... src/display.i"
+	@echo "... src/display.s"
 	@echo "... src/floats.o"
 	@echo "... src/floats.i"
 	@echo "... src/floats.s"
@@ -2226,6 +2310,12 @@ help:
 	@echo "... src/numbers.o"
 	@echo "... src/numbers.i"
 	@echo "... src/numbers.s"
+	@echo "... src/print.o"
+	@echo "... src/print.i"
+	@echo "... src/print.s"
+	@echo "... src/total.o"
+	@echo "... src/total.i"
+	@echo "... src/total.s"
 	@echo "... src/types.o"
 	@echo "... src/types.i"
 	@echo "... src/types.s"

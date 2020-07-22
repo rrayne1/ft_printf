@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/114/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/121/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/114/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/121/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -967,6 +967,45 @@ CMakeFiles/ft_printf.dir/src/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/src/utils.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maria/ft_printf/src/utils.c -o CMakeFiles/ft_printf.dir/src/utils.c.s
 
+CMakeFiles/ft_printf.dir/src/display.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/src/display.c.o: ../src/display.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maria/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/ft_printf.dir/src/display.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/src/display.c.o   -c /home/maria/ft_printf/src/display.c
+
+CMakeFiles/ft_printf.dir/src/display.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/src/display.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maria/ft_printf/src/display.c > CMakeFiles/ft_printf.dir/src/display.c.i
+
+CMakeFiles/ft_printf.dir/src/display.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/src/display.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maria/ft_printf/src/display.c -o CMakeFiles/ft_printf.dir/src/display.c.s
+
+CMakeFiles/ft_printf.dir/src/print.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/src/print.c.o: ../src/print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maria/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/ft_printf.dir/src/print.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/src/print.c.o   -c /home/maria/ft_printf/src/print.c
+
+CMakeFiles/ft_printf.dir/src/print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/src/print.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maria/ft_printf/src/print.c > CMakeFiles/ft_printf.dir/src/print.c.i
+
+CMakeFiles/ft_printf.dir/src/print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/src/print.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maria/ft_printf/src/print.c -o CMakeFiles/ft_printf.dir/src/print.c.s
+
+CMakeFiles/ft_printf.dir/src/total.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/src/total.c.o: ../src/total.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maria/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/ft_printf.dir/src/total.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/src/total.c.o   -c /home/maria/ft_printf/src/total.c
+
+CMakeFiles/ft_printf.dir/src/total.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/src/total.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maria/ft_printf/src/total.c > CMakeFiles/ft_printf.dir/src/total.c.i
+
+CMakeFiles/ft_printf.dir/src/total.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/src/total.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maria/ft_printf/src/total.c -o CMakeFiles/ft_printf.dir/src/total.c.s
+
 # Object files for target ft_printf
 ft_printf_OBJECTS = \
 "CMakeFiles/ft_printf.dir/libft/ft_atoi.c.o" \
@@ -1038,7 +1077,10 @@ ft_printf_OBJECTS = \
 "CMakeFiles/ft_printf.dir/src/ft_printf.c.o" \
 "CMakeFiles/ft_printf.dir/src/numbers.c.o" \
 "CMakeFiles/ft_printf.dir/src/types.c.o" \
-"CMakeFiles/ft_printf.dir/src/utils.c.o"
+"CMakeFiles/ft_printf.dir/src/utils.c.o" \
+"CMakeFiles/ft_printf.dir/src/display.c.o" \
+"CMakeFiles/ft_printf.dir/src/print.c.o" \
+"CMakeFiles/ft_printf.dir/src/total.c.o"
 
 # External object files for target ft_printf
 ft_printf_EXTERNAL_OBJECTS =
@@ -1113,9 +1155,12 @@ ft_printf: CMakeFiles/ft_printf.dir/src/ft_printf.c.o
 ft_printf: CMakeFiles/ft_printf.dir/src/numbers.c.o
 ft_printf: CMakeFiles/ft_printf.dir/src/types.c.o
 ft_printf: CMakeFiles/ft_printf.dir/src/utils.c.o
+ft_printf: CMakeFiles/ft_printf.dir/src/display.c.o
+ft_printf: CMakeFiles/ft_printf.dir/src/print.c.o
+ft_printf: CMakeFiles/ft_printf.dir/src/total.c.o
 ft_printf: CMakeFiles/ft_printf.dir/build.make
 ft_printf: CMakeFiles/ft_printf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maria/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Linking C executable ft_printf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maria/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Linking C executable ft_printf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
