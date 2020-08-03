@@ -78,8 +78,8 @@ add_executable(ft_printf
         src/floats.c
         src/ft_printf.c
         src/numbers.c
-        src/types.c
+        src/types_douf.c
         src/utils.c
         src/display.c
         src/print.c
-        src/total.c)
+        src/total.c src/type_x.c src/types_scp.c src/spec.c)

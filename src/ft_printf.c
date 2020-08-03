@@ -2,7 +2,6 @@
 
 int 		start(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
-	init_flags(tFlags);
 	while(tFlags->count == 0)
 	{
         check_flags(&(*format), tFlags);
@@ -26,8 +25,11 @@ int			ft_printf(const char *format, ...)
 	str = (char *)format;
 	while (*str != 0)
 	{
+		init_flags(tFlags);
 		if (*str == '%')
 		{
+			if (ft_strlen(str) == 1)
+				return (-1);
 			str++;
 			res += start(ft_printf_list, &str, tFlags);
 		}
@@ -39,15 +41,16 @@ int			ft_printf(const char *format, ...)
 	return (res);
 }
 
-/*int     main(void)
+/*int 	main(void)
 {
-    int a = 0;
-    int b = 0;
+	int a = 0;
+	int b = 0;
+	//int a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12;
 
-	a = printf("%x", 42);
+	a = printf("{%f}{%lf}{%Lf}", 1.42, 1.42, 1.42l);
 	printf("\n");
-	b = ft_printf("%x", 42);
-	printf("\n %d %d\n", a, b);
-
+//	printf("%f\n", c);
+	b = ft_printf("{%f}{%lf}{%Lf}", 1.42, 1.42, 1.42l);
+	printf("\n %d %d \n", a, b);
 	return (0);
 }*/

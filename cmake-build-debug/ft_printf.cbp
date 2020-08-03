@@ -298,10 +298,19 @@
 		<Unit filename="/home/maria/ft_printf/src/print.c">
 			<Option target="ft_printf"/>
 		</Unit>
+		<Unit filename="/home/maria/ft_printf/src/spec.c">
+			<Option target="ft_printf"/>
+		</Unit>
 		<Unit filename="/home/maria/ft_printf/src/total.c">
 			<Option target="ft_printf"/>
 		</Unit>
-		<Unit filename="/home/maria/ft_printf/src/types.c">
+		<Unit filename="/home/maria/ft_printf/src/type_x.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/home/maria/ft_printf/src/types_douf.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/home/maria/ft_printf/src/types_scp.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/home/maria/ft_printf/src/utils.c">

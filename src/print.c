@@ -5,13 +5,12 @@ void	ft_print_width(t_flags *tFlags)
 	int 	i;
 
 	i = 0;
-	while (i < tFlags->width)
+	while (i++ < tFlags->width)
 	{
-		if (tFlags->zero == 1 || tFlags->precision > 0)
+		if (tFlags->zero == 1 || tFlags->prec > 0)
 			ft_write(" ", 1);
 		else if (tFlags->zero == 0)
 			ft_write("0", 1);
-		i++;
 	}
 }
 

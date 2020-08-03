@@ -74,8 +74,11 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maria/ft_printf/src/ft_printf.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/ft_printf.c.o"
   "/home/maria/ft_printf/src/numbers.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/numbers.c.o"
   "/home/maria/ft_printf/src/print.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/print.c.o"
+  "/home/maria/ft_printf/src/spec.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/spec.c.o"
   "/home/maria/ft_printf/src/total.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/total.c.o"
-  "/home/maria/ft_printf/src/types.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/types.c.o"
+  "/home/maria/ft_printf/src/type_x.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/type_x.c.o"
+  "/home/maria/ft_printf/src/types_douf.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/types_douf.c.o"
+  "/home/maria/ft_printf/src/types_scp.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/types_scp.c.o"
   "/home/maria/ft_printf/src/utils.c" "/home/maria/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

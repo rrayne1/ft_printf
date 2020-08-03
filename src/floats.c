@@ -1,14 +1,21 @@
 #include "../includes/ft_printf.h"
 
-int 	ft_infinity(char **s)
+int 	ft_infinity(char **s, t_float *f)
 {
-	if (!(s = malloc(sizeof(char) * 4)))
+
+	if (!(*s = ft_strnew((f->nb == INFINITY || f->nb == NAN ? 4 : 5))))
 		return (0);
-	*s = "inf";
-	return (3);
+	if (f->nb == INFINITY)
+		*s = "inf";
+	if (f->nb == -INFINITY)
+		*s = "-inf";
+	if (f->nb == NAN)
+		*s = "nan";
+	return (ft_strlen(*s));
+
 }
 
-double 	ft_modulo(double nb, int *size)
+double 	ft_modulo(long double nb, int *size)
 {
 	double modulo;
 
@@ -19,97 +26,220 @@ double 	ft_modulo(double nb, int *size)
 	return (modulo);
 }
 
-void 	ft_full(char **s, int *i, double modulo, double *nb)
+char*	ft_strjoin_free(char *s1, char *s2)
 {
-	char *str;
+	char	*str;
+	int		len;
 
-	str = *s;
-	while ((int)*nb != 0)
+	len = (int)(s2 ? ft_strlen(s1) + ft_strlen(s2) : ft_strlen(s1) + 0);
+	if (!(str = (char *)malloc(sizeof(*str) * (len + 1))))
+		return (NULL);
+	ft_strcpy(str, s1);
+	if (s2)
 	{
-		str[(*i)++] = ((char)(*nb / modulo) + 48);
-		*nb -= (int)(*nb / modulo) * modulo;
-		modulo /= 10;
+		ft_strcat(str, s2);
+		free(s2);
 	}
+	free (s1);
+	return (str);
 }
 
-void 	check_precision(double *nb, int *size, t_flags *tFlags, double modulo)
+int	ft_full(t_float *f, t_flags *tFlags)
 {
-	double tmp;
-	int 	i;
+	char	*bf;
+	char	*af;
+	char 	*s;
+	intmax_t tmp;
 
-	i = 0;
-	tmp = (*nb);
-	if ((*nb) < 0 && (*size)++ && (tFlags->neg = 1) == 1)
+//	if (f->nb == INFINITY || f->nb == -INFINITY || f->nb == NAN)
+	//	return (ft_infinity(&s, f));
+	tmp = (intmax_t)f->nb;
+	bf = ft_itoa(tmp);
+	f->nb -= tmp;
+	if (tFlags->prec > 0)
 	{
-		(*nb) = -(*nb);
-		tmp *= -1;
-		tFlags->width--;
+		if (!(af = ft_strnew(tFlags->prec + 1)))
+			return (0);
+		ft_full_after(&af, tFlags, f);
 	}
-	while ((int)tmp != 0)
-	{
-		tmp -= (int) (tmp / modulo) * modulo;
-		modulo /= 10;
-		i++;
-	}
-	if (tmp >= 0.5)
-		(*nb) += (1.0 - tmp);
 	else
-		(*nb) -= tmp;
-}
-
-int		ft_full_after(char **s, int *i, t_flags *tFlags, double nb)
-{
-	int		j;
-	int 	size;
-	double 	modulo;
-
-	j = 0;
-	if (tFlags->precision == 0)
+		af = 0;
+	if (!(s = ft_strjoin_free(bf, af)))
 		return (0);
-	while (++j <= tFlags->precision)
-		nb *= 10;
-	modulo = ft_modulo(nb, &size);
-	check_precision(&nb, &size, tFlags, modulo);
-	(*s)[(*i)++] = '.';
-	tFlags->width--;
-	ft_full(&(*s), i, modulo, &nb);
-	return (1);
+	ft_display_f(s, tFlags);
+	free(s);
+	return (tFlags->total);
 }
 
-/* while (j++ < tFlags->precision)
-	{
-		if ((int)nb == 0)
-		{
-			(*s)[(*i)++] = '0';
-			continue ;
-		}
-		tmp = ((int)nb != 9) ? (int)(nb + 0.01) : (int)nb;
-		(*s)[(*i)++] = (char)(tmp + 48);
-		nb = (nb - tmp) * 10;
-	}*/
-
-int 	ft_float_to_string(double nb, char **s, t_flags *tFlags)
+void 	get_prec(t_float *f, long double nb, t_flags *tFlags)
 {
-	char 	*str;
-	int 	size;
-	int 	i;
-	double	modulo;
+	long double		tmp;
+	int 			tprec;
+	int 			tsize;
 
-	if (nb == INFINITY)
-		return (ft_infinity(&str));
-	size = 1;
+	if (tFlags->prec == 0 || (tFlags->prec == 1 && !f->type))
+		f->size = 1;
+	tprec = tFlags->prec;
+	tsize = 0;
+	while (tprec-- + 1)
+	{
+		tmp = (intmax_t)(nb * 10);
+		nb = nb * 10;
+		if ((int)tmp == 0)
+			tsize ++;
+	}
+
+	if ((f->size = ft_getsize((intmax_t)tmp, tFlags)) > 1)
+	{
+		while ((intmax_t)(tmp / 10) % 10 == 0 && (intmax_t)tmp % 10 == 0)
+			tmp /= 10;
+		f->size = ft_getsize((intmax_t) tmp, tFlags);
+	}
+	f->size += tsize;
+}
+
+void 	ft_get_fal(t_float *f, long double nb, t_flags *tFlags)
+{
+	int i;
+
+	nb *= 10;
+	f->first = (int)nb;
+	i = (int)f->size - 1;
+	while (i-- > 0)
+		nb *= 10;
+	if ((intmax_t)nb % 10 == 9)
+	{
+		f->last = (intmax_t)nb % 10;
+		while ((intmax_t)nb % 10 == 9 && (intmax_t)nb != 0)
+			nb /= 10;
+		if ((intmax_t)nb % 10 == 0)
+		{
+			if ((((intmax_t)(nb / 10) % 10) % 2) == 0 && ((intmax_t)(nb / 10) % 10) != 0)
+			f->first = ((intmax_t)nb / 10) % 10;
+		}
+		else
+			f->first = (intmax_t)nb % 10;
+	}
+	else if (((intmax_t)nb % 10) == 5)
+	{
+		f->last = (intmax_t)nb % 10;
+		if (f->type > 0)
+		{
+			if (f->size > 1)
+				f->first = (intmax_t) (nb / 10) % 10;
+			if (f->size > tFlags->prec)
+				f->first = f->last;
+		}
+	}
+	if (f->last == 0)
+	{
+		f->last = (intmax_t) nb % 10;
+		if (f->first == 9 && f->last == 8 && !f->type)
+			f->first = (intmax_t) (nb / 10) % 10;
+		if (f->type == LDEC) {
+			nb /= 10;
+			f->last = (intmax_t) nb % 10;
+			f->first = (intmax_t) (nb / 10) % 10;
+		}
+	}
+}
+
+int 	check_precision(t_float *f, t_flags *tFlags)
+{
+	long double		tmp;
+	int 			tsize;
+
+	tsize = 1;
+	tmp = f->nb;
+	f->mod = ft_modulo(tmp, &tsize);
+	if ((((int)tmp / (int)f->mod) % 10) == 9)
+		tFlags->count = 1;
+	tmp -= (int)tmp;
+	get_prec(f, tmp, tFlags);
+	ft_get_fal(f, tmp, tFlags);
+	if (f->type == LDEC)
+		return (0);
+	if (!f->type)
+	{
+		if (tFlags->prec == 0 && f->first >= 5 && ((int)f->nb % 2) != 0)
+			return (1);
+		if (f->first <= 5)
+			return (0);
+		if (f->first == 9 && !f->last)
+			return (tFlags->prec == 0 ? 1 : 0);
+		if (f->first == 9)
+			return (f->last == 8 || f->last == 9 ? 1 : 0);
+		if (f->last == 9)
+			return (0);
+	}
+	if (f->type > 0)
+	{
+		if (!f->last && f->type == DEC)
+			return (0);
+		if (!f->last && f->type == LDEC)
+			return ((f->first % 2) == 0 ? 1 : 0);
+		if ((f->first % 2) == 0 && (f->last % 2) == 0 && f->type == LDEC)
+			return (1);
+		if (f->first == f->last)
+			return (f->first >= 5 ? 1 : 0);
+		if (f->last == 9)
+			return (((f->first % 2) == 0) || f->first <= 5 ? 1 : 0);
+		if (((f->last % 2) == 0 && f->last > 5) || (f->last > 5 && f->last != 9))
+			return (1);
+		if (f->last == 5)
+			return ((((f->first % 2) == 0) || f->first == 9) ? 1 : 0);
+		if (f->last < 5 || ((f->last % 2) == 0))
+			return (0);
+	}
+	else
+		return (!f->type && (f->first != 9 || (f->last % 2) == 0) ? 0 : 1);
+	return (0);
+}
+
+void	ft_check_str(char **str, int add)
+{
+	int i;
+	int nb;
+	char 	*s;
+	int		mod;
+
+	s = *str;
+	i = (int)ft_strlen(&(**str)) - 1;
+	if (add == 1)
+	{
+		while (s[i] == '9')
+		{
+			s[i] = '0';
+			i--;
+		}
+		if (s[i] != '.')
+		{
+			nb = ft_atoi(&(s[i]));
+			mod = (int)ft_modulo(nb, &add);
+			nb = (nb / mod) + 1;
+			s[i] = (char) (nb + '0');
+		}
+	}
+}
+
+void	ft_full_after(char **af, t_flags *tFlags, t_float *f)
+{
+	int j;
+	int tmp;
+	int i;
+	int add;
+
 	i = 0;
-	modulo = ft_modulo(nb, &size);
-	if (tFlags->precision == 0)
-		check_precision(&nb, &size, tFlags, modulo);
-	size = size > tFlags->width ? size : tFlags->width;
-	size += tFlags->precision;
-	if (!(str = malloc(sizeof(char) * (size + 1))))
-		return (-1);
-	ft_full(&str, &i, modulo, &nb);
-	tFlags->width -= i;
-	ft_full_after(&str, &i, tFlags, nb);
-	str[i] = '\0';
-	*s = str;
-	return (size);
+	if (tFlags->prec > 0)
+		(*af)[i++] = '.';
+	tFlags->total += 1;
+	j = 0;
+	tFlags->type = 7;
+	add = check_precision(f, tFlags);
+	while (j++ < tFlags->prec) {
+		tmp = (intmax_t)(f->nb * 10);
+		(*af)[i++] = (char) (tmp + '0');
+		f->nb = f->nb * 10 - tmp;
+	}
+	ft_check_str(af, add);
 }
