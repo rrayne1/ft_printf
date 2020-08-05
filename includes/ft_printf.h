@@ -14,12 +14,13 @@
 #define TYPE_L 3
 #define TYPE_LL 4
 #define TYPE_LF 5
+#define p 6
 #define DEC 1
 #define LDEC 2
 
 typedef struct 		s_flags
 {
-	int				count;
+	int				flag;
 	int				width;
 	char			space;
 	char 			plus;

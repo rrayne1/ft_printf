@@ -11,7 +11,7 @@ void 	init_flags(t_flags *tFlags)
 	tFlags->prec = -1;
 	tFlags->neg = 0;
 	tFlags->space = 0;
-	tFlags->count = 0;
+	tFlags->flag = 0;
 	tFlags->total = 0;
 }
 void 	check_width(char **format, t_flags *tFlags)
@@ -66,23 +66,25 @@ int		check_format(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
     if (*(*format) == '%')
         ft_print_percent(tFlags);
-    if (*(*format) == 's')
+    else if (*(*format) == 's')
         type_s(ft_printf_list, tFlags);
-    if (*(*format) == 'c')
+    else if (*(*format) == 'c')
         type_c(ft_printf_list, tFlags);
-    if (*(*format) == 'd' || *(*format) == 'i')
+    else if (*(*format) == 'd' || *(*format) == 'i')
         type_d(ft_printf_list, tFlags);
-    if (*(*format) == 'f')
+    else if (*(*format) == 'f')
         type_f(ft_printf_list, tFlags);
-    if (*(*format) == 'o')
+    else if (*(*format) == 'o')
     	type_o(ft_printf_list, tFlags);
-    if (*(*format) == 'u')
+    else if (*(*format) == 'u')
     	type_u(ft_printf_list, tFlags);
-    if (*(*format) == 'x')
+	else if (*(*format) == 'x')
 		type_x(ft_printf_list, tFlags, "0123456789abcdef");
-    if (*(*format) == 'X')
+    else if (*(*format) == 'X')
 		type_x(ft_printf_list, tFlags, "0123456789ABCDEF");
-    if (*(*format) == 'p')
+    else if (*(*format) == 'p')
 		type_p(ft_printf_list, tFlags, "0123456789abcdef");
+	else
+		return (-1);
     return (1);
 }

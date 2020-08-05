@@ -23,7 +23,7 @@ int 	type_d(va_list ft_printf_list, t_flags *tFlags)
 	if (tFlags->prec > 0)
 		tFlags->zero = 1;
 	ft_display_d(nb, size, tFlags);
-    tFlags->count += 1;
+    tFlags->flag += 1;
 	return (tFlags->total);
 }
 
@@ -79,7 +79,7 @@ int 	type_f(va_list ft_printf_list, t_flags *tFlags)
 	ft_full(f, tFlags);
 	free(f);
 	tFlags->total = size;
-    tFlags->count += 1;
+    tFlags->flag += 1;
 	return (tFlags->total);
 }
 
@@ -106,7 +106,7 @@ int		type_o(va_list ft_print_list, t_flags *tFlags)
 	ft_display_o(nb, size, tFlags);
 	if (tFlags->hash && nb == 0)
 		tFlags->total = 1;
-	tFlags->count += 1;
+	tFlags->flag += 1;
 	return (tFlags->total);
 }
 
@@ -124,6 +124,6 @@ int		type_u(va_list ft_printf_list, t_flags *tFlags)
 			(!tFlags->zero && tFlags->minus))
 		tFlags->zero = 1;
 	ft_display_u(nb, size, tFlags);
-	tFlags->count += 1;
+	tFlags->flag += 1;
 	return (tFlags->total);
 }

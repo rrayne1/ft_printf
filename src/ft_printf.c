@@ -2,7 +2,7 @@
 
 int 		start(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
-	while(tFlags->count == 0)
+	while(tFlags->flag == 0)
 	{
         check_flags(&(*format), tFlags);
         check_types(&(*format), tFlags);
@@ -10,6 +10,33 @@ int 		start(va_list ft_printf_list, char **format, t_flags *tFlags)
         ++(*format);
     }
 	return (tFlags->total);
+}
+
+int		check_val(char *str)
+{
+	if (ft_strchr(str, 'd'))
+		return (1);
+	else if (ft_strchr(str, 'i'))
+		return (1);
+	else if (ft_strchr(str, 'o'))
+		return (1);
+	else if (ft_strchr(str, 'u'))
+		return (1);
+	else if (ft_strchr(str, 'x'))
+		return (1);
+	else if (ft_strchr(str, 'X'))
+		return (1);
+	else if (ft_strchr(str, 's'))
+		return (1);
+	else if (ft_strchr(str, 'c'))
+		return (1);
+	else if (ft_strchr(str, 'p'))
+		return (1);
+	else if (ft_strchr(str, 'f'))
+		return (1);
+	else if (ft_strchr(str, '%'))
+		return (1);
+	return (0);
 }
 
 int			ft_printf(const char *format, ...)
@@ -28,14 +55,16 @@ int			ft_printf(const char *format, ...)
 		init_flags(tFlags);
 		if (*str == '%')
 		{
-			if (ft_strlen(str) == 1)
-				return (-1);
 			str++;
+			if(!(check_val(str)))
+				return (0);
 			res += start(ft_printf_list, &str, tFlags);
 		}
-		else
+		else if (res != -1)
 			res += ft_print_str(&str);
 	}
+	if (res == -1)
+		res = 0;
 	va_end(ft_printf_list);
 	free(tFlags);
 	return (res);
@@ -47,10 +76,10 @@ int			ft_printf(const char *format, ...)
 	int b = 0;
 	//int a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12;
 
-	a = printf("{%f}{%lf}{%Lf}", 1.42, 1.42, 1.42l);
+	a = printf("%", 0);
 	printf("\n");
 //	printf("%f\n", c);
-	b = ft_printf("{%f}{%lf}{%Lf}", 1.42, 1.42, 1.42l);
+	b = ft_printf("%", 5);
 	printf("\n %d %d \n", a, b);
 	return (0);
 }*/

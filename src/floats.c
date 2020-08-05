@@ -153,7 +153,7 @@ int 	check_precision(t_float *f, t_flags *tFlags)
 	tmp = f->nb;
 	f->mod = ft_modulo(tmp, &tsize);
 	if ((((int)tmp / (int)f->mod) % 10) == 9)
-		tFlags->count = 1;
+		tFlags->flag = 1;
 	tmp -= (int)tmp;
 	get_prec(f, tmp, tFlags);
 	ft_get_fal(f, tmp, tFlags);

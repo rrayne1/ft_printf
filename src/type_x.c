@@ -46,15 +46,20 @@ void ft_display_x(uintmax_t nb, int *size, t_flags *tFlags, char *base)
 	if (tFlags->prec > 0)
 		tFlags->zero = 1;
 	check_zero(nb, size, tFlags);
-	if (size == 0 && nb == 0 && tFlags->prec > 0)
-		ft_write("0", 1);
+//	if (size == 0 && nb == 0 && tFlags->prec > 0)
+//		ft_write("0", 1);
 	ft_precision(tFlags, *size);
 	if (tFlags->prec > 0)
 		ft_display_precision(tFlags, cont);
 	if (tFlags->prec <= 0)
 		ft_display_width(tFlags, cont);
-	if (*size > 0 && tFlags->count != 1)
+	if (*size > 0 && tFlags->flag != 1)
 		ft_putnbr_base((uintmax_t)nb, base, 16);
+	if (nb == 0 && (tFlags->prec == -1) && tFlags->type == p)
+	{
+		ft_write("0", 1);
+		tFlags->total += 1;
+	}
 	while (++width <= tFlags->width && tFlags->minus)
 		ft_write(" ", 1);
 }
@@ -78,6 +83,6 @@ int		type_x(va_list ft_printf_list, t_flags *tFlags, char *base)
 	ft_display_x(nb, &size, tFlags, base);
 	if (tFlags->prec <= 0)
 		total_dit(nb, size, tFlags);
-	tFlags->count += 1;
+	tFlags->flag += 1;
 	return (tFlags->total);
 }

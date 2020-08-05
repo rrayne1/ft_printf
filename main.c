@@ -1,7 +1,7 @@
 #include "includes/ft_printf.h"
 #define INT_MIN -2147483648
 #define INT_MAX 2147483649
-int 	main(void)
+/*int 	main(void)
 {
 	int a = 0;
 	int b = 0;
@@ -12,4 +12,4 @@ int 	main(void)
 	b = ft_printf("%f", -1.5);
 	printf("\n %d %d \n", a, b);
 	return (0);
-}
+}*/
