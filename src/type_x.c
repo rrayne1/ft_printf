@@ -2,7 +2,7 @@
 
 void ft_display_precision(t_flags *tFlags, char *cont)
 {
-	if (tFlags->width == 0 && tFlags->hash && tFlags->type != 6)
+	if (tFlags->width == 0 && tFlags->hash && tFlags->type != p)
 	{
 		tFlags->prec -= 2;
 		tFlags->total += 2;
@@ -46,14 +46,12 @@ void ft_display_x(uintmax_t nb, int *size, t_flags *tFlags, char *base)
 	if (tFlags->prec > 0)
 		tFlags->zero = 1;
 	check_zero(nb, size, tFlags);
-//	if (size == 0 && nb == 0 && tFlags->prec > 0)
-//		ft_write("0", 1);
 	ft_precision(tFlags, *size);
 	if (tFlags->prec > 0)
 		ft_display_precision(tFlags, cont);
 	if (tFlags->prec <= 0)
 		ft_display_width(tFlags, cont);
-	if (*size > 0 && tFlags->flag != 1)
+	if (*size > 0 && tFlags->count != 1)
 		ft_putnbr_base((uintmax_t)nb, base, 16);
 	if (nb == 0 && (tFlags->prec == -1) && tFlags->type == p)
 	{
@@ -83,6 +81,6 @@ int		type_x(va_list ft_printf_list, t_flags *tFlags, char *base)
 	ft_display_x(nb, &size, tFlags, base);
 	if (tFlags->prec <= 0)
 		total_dit(nb, size, tFlags);
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return (tFlags->total);
 }

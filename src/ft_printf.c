@@ -1,15 +1,22 @@
 #include "../includes/ft_printf.h"
 
-int 		start(va_list ft_printf_list, char **format, t_flags *tFlags)
+int 		start(va_list ft_printf_list, char **format)
 {
-	while(tFlags->flag == 0)
+	t_flags		*tFlags;
+	int tres;
+
+	tFlags = (t_flags *)malloc(sizeof(t_flags));
+	init_flags(tFlags);
+	while(tFlags->count == 0)
 	{
-        check_flags(&(*format), tFlags);
-        check_types(&(*format), tFlags);
-        check_format(ft_printf_list, &(*format), tFlags);
-        ++(*format);
+        check_flags(format, tFlags);
+        check_types(format, tFlags);
+        check_format(ft_printf_list, format, tFlags);
+        (*format)++;
     }
-	return (tFlags->total);
+	tres = tFlags->total;
+	free(tFlags);
+	return (tres);
 }
 
 int		check_val(char *str)
@@ -42,35 +49,29 @@ int		check_val(char *str)
 int			ft_printf(const char *format, ...)
 {
 	va_list 	ft_printf_list;
-	t_flags		*tFlags;
 	int 		res;
 	char 		*str;
 
 	res = 0;
-	tFlags = (t_flags *)malloc(sizeof(t_flags));
 	va_start(ft_printf_list, format);
 	str = (char *)format;
 	while (*str != 0)
 	{
-		init_flags(tFlags);
 		if (*str == '%')
 		{
 			str++;
 			if(!(check_val(str)))
 				return (0);
-			res += start(ft_printf_list, &str, tFlags);
+			res += start(ft_printf_list, &str);
 		}
-		else if (res != -1)
+		else
 			res += ft_print_str(&str);
 	}
-	if (res == -1)
-		res = 0;
 	va_end(ft_printf_list);
-	free(tFlags);
 	return (res);
 }
 
-/*int 	main(void)
+int 	main(void)
 {
 	int a = 0;
 	int b = 0;
@@ -79,7 +80,7 @@ int			ft_printf(const char *format, ...)
 	a = printf("%", 0);
 	printf("\n");
 //	printf("%f\n", c);
-	b = ft_printf("%", 5);
+	b = ft_printf("%f", -0.000);
 	printf("\n %d %d \n", a, b);
 	return (0);
-}*/
+}

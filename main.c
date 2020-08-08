@@ -12,4 +12,5 @@
 	b = ft_printf("%f", -1.5);
 	printf("\n %d %d \n", a, b);
 	return (0);
-}*/
+}
+*/

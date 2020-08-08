@@ -44,6 +44,35 @@ char*	ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
+#include "libft.h"
+
+char	*ft_ditoa(int n, t_flags *tFlags)
+{
+	int				len;
+	char			*num;
+	int				i;
+	unsigned int	nb;
+
+	((n > 0) ? (nb = (unsigned int)n) :\
+	(nb = (unsigned int)(-n)));
+	len = ft_getlen(nb);
+	i = len - 1;
+	if (!(num = (char *)malloc(sizeof(char) * len + 1)))
+		return (0);
+	if (nb >= 0 && tFlags->neg == 1)
+		num[0] = '-';
+	if (n == 0)
+		num[0] = '0';
+	while (nb != 0)
+	{
+		num[i] = (nb % 10) + '0';
+		nb = nb / 10;
+		i--;
+	}
+	num[len] = 0;
+	return (num);
+}
+
 int	ft_full(t_float *f, t_flags *tFlags)
 {
 	char	*bf;
@@ -54,7 +83,7 @@ int	ft_full(t_float *f, t_flags *tFlags)
 //	if (f->nb == INFINITY || f->nb == -INFINITY || f->nb == NAN)
 	//	return (ft_infinity(&s, f));
 	tmp = (intmax_t)f->nb;
-	bf = ft_itoa(tmp);
+	bf = ft_ditoa(tmp, tFlags);
 	f->nb -= tmp;
 	if (tFlags->prec > 0)
 	{
@@ -66,6 +95,7 @@ int	ft_full(t_float *f, t_flags *tFlags)
 		af = 0;
 	if (!(s = ft_strjoin_free(bf, af)))
 		return (0);
+	tFlags->neg = 0;
 	ft_display_f(s, tFlags);
 	free(s);
 	return (tFlags->total);
@@ -89,11 +119,11 @@ void 	get_prec(t_float *f, long double nb, t_flags *tFlags)
 			tsize ++;
 	}
 
-	if ((f->size = ft_getsize((intmax_t)tmp, tFlags)) > 1)
+	if ((f->size = ft_getsize((intmax_t)tmp)) > 1)
 	{
 		while ((intmax_t)(tmp / 10) % 10 == 0 && (intmax_t)tmp % 10 == 0)
 			tmp /= 10;
-		f->size = ft_getsize((intmax_t) tmp, tFlags);
+		f->size = ft_getsize((intmax_t) tmp);
 	}
 	f->size += tsize;
 }
@@ -153,7 +183,7 @@ int 	check_precision(t_float *f, t_flags *tFlags)
 	tmp = f->nb;
 	f->mod = ft_modulo(tmp, &tsize);
 	if ((((int)tmp / (int)f->mod) % 10) == 9)
-		tFlags->flag = 1;
+		tFlags->count = 1;
 	tmp -= (int)tmp;
 	get_prec(f, tmp, tFlags);
 	ft_get_fal(f, tmp, tFlags);
@@ -230,6 +260,8 @@ void	ft_full_after(char **af, t_flags *tFlags, t_float *f)
 	int add;
 
 	i = 0;
+	if (f->nb < 0)
+		f->nb = -f->nb;
 	if (tFlags->prec > 0)
 		(*af)[i++] = '.';
 	tFlags->total += 1;

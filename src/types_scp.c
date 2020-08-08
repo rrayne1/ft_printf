@@ -1,19 +1,4 @@
 #include "../includes/ft_printf.h"
-/*void	null_str(char *s, size_t *len, t_flags *tFlags)
-{
-	if (tFlags->prec == -2 || tFlags->prec == 0 || \
-		(tFlags->prec >= 0 && !s))
-	{
-		if (tFlags->prec >= 6)
-		{
-			*len = 6;
-		}
-		else
-		{
-			*len = 0;
-		}
-	}
-}*/
 
 int		type_s(va_list ft_print_list, t_flags *tFlags)
 {
@@ -30,20 +15,19 @@ int		type_s(va_list ft_print_list, t_flags *tFlags)
 		len = 6;
 	}
 	total_str(s, &len, tFlags);
-//	null_str(s, &len, tFlags);
 	if (tFlags->width != 0)
 	{
-		if (tFlags->minus == 1)
+		if (tFlags->minus == 1 && (tFlags->zero = 1) == 1)
 			ft_write(s, len);
 		while (width++ < tFlags->width)
 		{
-			ft_write(" ", 1);
+			ft_write((tFlags->zero == 0 ? "0" : " "), 1);
 		}
 	}
 	if (!tFlags->width || !tFlags->minus)
 		ft_write(s, len);
 	tFlags->total = (len > 0 ? tFlags->total + (int)len : tFlags->total + 0);
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return(tFlags->total);
 }
 
@@ -70,7 +54,7 @@ int 	type_c(va_list ft_printf_list, t_flags *tFlags)
 	if (!tFlags->width || !tFlags->minus)
 		ft_write(&c, tFlags->total);
 	tFlags->total += width;
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return(tFlags->total);
 }
 
@@ -92,6 +76,6 @@ int		type_p(va_list ft_printf_list, t_flags *tFlags, char *base)
 	if (tFlags->prec <= 0)
 		total_dit(nb, size, tFlags);
 	tFlags->total += 2;
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return (tFlags->total);
 }

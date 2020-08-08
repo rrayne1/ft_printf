@@ -20,7 +20,7 @@
 
 typedef struct 		s_flags
 {
-	int				flag;
+	int				count;
 	int				width;
 	char			space;
 	char 			plus;
@@ -41,16 +41,16 @@ typedef struct 		s_float
 	intmax_t 		last;
 	intmax_t 		size;
 	int 			type;
+	int				add;
 }					t_float;
 
 int					ft_printf(const char *format, ...);
-int 				start(va_list ft_printf_list, char **format, \
-							t_flags *tFlags);
+int 				start(va_list ft_printf_list, char **format);
 
 void 				init_flags(t_flags *tFlags);
-int					check_flags(char **format, t_flags *tFlags);
+void				check_flags(char **format, t_flags *tFlags);
 void 				check_types(char **format, t_flags *tFlags);
-int					check_format(va_list ft_printf_list, char **format, \
+void					check_format(va_list ft_printf_list, char **format, \
 									t_flags *tFlags);
 
 int					type_s(va_list ft_print_list, t_flags *tFlags);
@@ -67,7 +67,7 @@ void				ft_get_nb_u(va_list ft_printf_list, uintmax_t *nb, \
 void 				ft_get_nb(va_list ft_printf_list, intmax_t *nb, \
 									t_flags *tFlags);
 
-int					ft_getsize(intmax_t n, t_flags *tFlags);
+int					ft_getsize(intmax_t n);
 void				ft_get_size_u(uintmax_t nb, uintmax_t length, int *size);
 void 				ft_putnbr_base(uintmax_t nb, char *str, uintmax_t length);
 void 				ft_precision(t_flags *tFlags, int size);

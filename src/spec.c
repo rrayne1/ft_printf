@@ -18,7 +18,7 @@ int 	check_zero(uintmax_t nb, int *size, t_flags *tFlags)
 		if (tFlags->width > 0 && tFlags->type != p)
 			tFlags->width += *size;
 		*size = 0;
-		tFlags->flag = 1;
+		tFlags->count = 1;
 		return (-1);
 	}
 	return (0);

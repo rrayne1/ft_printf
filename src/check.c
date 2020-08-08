@@ -11,7 +11,7 @@ void 	init_flags(t_flags *tFlags)
 	tFlags->prec = -1;
 	tFlags->neg = 0;
 	tFlags->space = 0;
-	tFlags->flag = 0;
+	tFlags->count = 0;
 	tFlags->total = 0;
 }
 void 	check_width(char **format, t_flags *tFlags)
@@ -28,15 +28,17 @@ void 	check_width(char **format, t_flags *tFlags)
 	}
 }
 
-int       check_flags(char **format, t_flags *tFlags)
+void       check_flags(char **format, t_flags *tFlags)
 {
-    if (*(*format) == 32)
+	if (*(*format) == '*')
+		tFlags->count = 1;
+    if (*(*format) == ' ')
         tFlags->space = 1;
-    if (*(*format) == 43)
+    if (*(*format) == '+')
         tFlags->plus = 1;
-    if (*(*format) == 45)
+    if (*(*format) == '-')
         tFlags->minus = 1;
-    if (*(*format) == '0' && *(*format - 1) != 46)
+    if (*(*format) == '0' && *(*format - 1) != '.')
         tFlags->zero = 0;
     if (*(*format) == '#')
     	tFlags->hash = 1;
@@ -44,8 +46,6 @@ int       check_flags(char **format, t_flags *tFlags)
    		tFlags->prec = -2;
     if ((ft_isdigit(*(*format))) == 1)
         check_width(&(*format), tFlags);
-
-    return (1);
 }
 
 void 	check_types(char **format, t_flags *tFlags)
@@ -62,7 +62,7 @@ void 	check_types(char **format, t_flags *tFlags)
 		tFlags->type = TYPE_LF;
 }
 
-int		check_format(va_list ft_printf_list, char **format, t_flags *tFlags)
+void		check_format(va_list ft_printf_list, char **format, t_flags *tFlags)
 {
     if (*(*format) == '%')
         ft_print_percent(tFlags);
@@ -84,7 +84,4 @@ int		check_format(va_list ft_printf_list, char **format, t_flags *tFlags)
 		type_x(ft_printf_list, tFlags, "0123456789ABCDEF");
     else if (*(*format) == 'p')
 		type_p(ft_printf_list, tFlags, "0123456789abcdef");
-	else
-		return (-1);
-    return (1);
 }

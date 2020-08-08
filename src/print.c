@@ -32,14 +32,15 @@ int   ft_print_percent(t_flags *tFlags)
 {
 	if (tFlags->width > 0)
 		tFlags->width -= 1;
-	tFlags->zero = 1;
+	if (tFlags->minus)
+		tFlags->zero = 1;
 	if (!tFlags->minus)
 		ft_print_width(tFlags);
 	ft_write("%", 1);
 	tFlags->total = (tFlags->width > 0 ? tFlags->width + 1 : 1);
 	if (tFlags->minus)
 		ft_print_width(tFlags);
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return (tFlags->total);
 }
 

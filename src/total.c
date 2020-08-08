@@ -2,9 +2,7 @@
 
 void 	total_str(char *s, size_t *len, t_flags *tFlags)
 {
-	if (!s)
-		*len = 6;
-	else if(tFlags->prec > 0 && tFlags->prec < (int)ft_strlen(s))
+	if(tFlags->prec > 0 && tFlags->prec < (int)ft_strlen(s))
 		*len = tFlags->prec;
 	else
 		*len = ft_strlen(s);
@@ -23,7 +21,7 @@ void 	total_dit(intmax_t nb, int size, t_flags *tFlags)
 	if (tFlags->total < 0)
 		tFlags->total = 0;
 	if (tFlags->width == size && size != 0)
-		tFlags->total += size + ft_getsize((uintmax_t)(nb), tFlags);
+		tFlags->total += size + ft_getsize((uintmax_t)nb);
 	if (tFlags->width != size && tFlags->width >= 0)
 		tFlags->total += size + tFlags->width;
 	if (tFlags->width < 0)

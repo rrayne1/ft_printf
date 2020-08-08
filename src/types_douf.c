@@ -6,10 +6,10 @@ int 	type_d(va_list ft_printf_list, t_flags *tFlags)
 	int			size;
 
 	ft_get_nb(ft_printf_list, &nb, tFlags);
-	size = ft_getsize(nb, tFlags);
+	size = ft_getsize(nb);
 	if (tFlags->width != 0)
 		tFlags->width -= size;
-	if (tFlags->neg)
+	if (nb < 0 && (tFlags->neg = 1) == 1)
 	{
 		tFlags->width--;
 		tFlags->total += 1;
@@ -23,7 +23,7 @@ int 	type_d(va_list ft_printf_list, t_flags *tFlags)
 	if (tFlags->prec > 0)
 		tFlags->zero = 1;
 	ft_display_d(nb, size, tFlags);
-    tFlags->flag += 1;
+    tFlags->count += 1;
 	return (tFlags->total);
 }
 
@@ -55,6 +55,7 @@ void 	init_float(t_float *f)
 	f->last = 0;
 	f->first = 0;
 	f->mod = 0;
+	f->add = 0;
 }
 
 
@@ -71,15 +72,17 @@ int 	type_f(va_list ft_printf_list, t_flags *tFlags)
 									va_arg(ft_printf_list, long double) :\
 									va_arg(ft_printf_list, double));
 	size = 1;
-	if (f->nb < 0.0f && size-- && (tFlags->neg = 1) == 1)
+	if (1.0 / f->nb == -1.0 / 0.0&& size--) {
+		tFlags->neg = 1;
 		f->nb = -f->nb;
+	}
 	check_size(&size, f, tFlags);
 	if (tFlags->prec == 0)
-		size = (ft_getsize((intmax_t)f->nb, tFlags));
+		size = (ft_getsize((intmax_t)f->nb));
 	ft_full(f, tFlags);
 	free(f);
 	tFlags->total = size;
-    tFlags->flag += 1;
+    tFlags->count += 1;
 	return (tFlags->total);
 }
 
@@ -106,7 +109,7 @@ int		type_o(va_list ft_print_list, t_flags *tFlags)
 	ft_display_o(nb, size, tFlags);
 	if (tFlags->hash && nb == 0)
 		tFlags->total = 1;
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return (tFlags->total);
 }
 
@@ -124,6 +127,6 @@ int		type_u(va_list ft_printf_list, t_flags *tFlags)
 			(!tFlags->zero && tFlags->minus))
 		tFlags->zero = 1;
 	ft_display_u(nb, size, tFlags);
-	tFlags->flag += 1;
+	tFlags->count += 1;
 	return (tFlags->total);
 }

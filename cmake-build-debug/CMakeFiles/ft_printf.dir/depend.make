@@ -187,6 +187,7 @@ CMakeFiles/ft_printf.dir/src/display.c.o: ../includes/ft_printf.h
 CMakeFiles/ft_printf.dir/src/display.c.o: ../libft/libft.h
 CMakeFiles/ft_printf.dir/src/display.c.o: ../src/display.c
 
+CMakeFiles/ft_printf.dir/src/floats.c.o: ../libft/libft.h
 CMakeFiles/ft_printf.dir/src/floats.c.o: ../includes/ft_printf.h
 CMakeFiles/ft_printf.dir/src/floats.c.o: ../libft/libft.h
 CMakeFiles/ft_printf.dir/src/floats.c.o: ../src/floats.c

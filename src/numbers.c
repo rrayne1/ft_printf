@@ -30,13 +30,11 @@ void	ft_get_nb_u(va_list ft_printf_list, uintmax_t *nb, t_flags *tFlags)
 		*nb = (unsigned int)*nb;
 }
 
-int		ft_getsize(intmax_t n, t_flags *tFlags)
+int		ft_getsize(intmax_t n)
 {
 	intmax_t	len;
 
 	len = 0;
-	if (n < 0)
-		tFlags->neg = 1;
 	if (n == 0)
 	{
 		len = 1;
