@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <inttypes.h>
-#include <math.h>
-#include <limits.h>
 #include <stdlib.h>
 #include "../libft/libft.h"
 

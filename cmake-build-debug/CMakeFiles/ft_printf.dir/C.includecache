@@ -6,26 +6,12 @@
 
 #IncludeRegexTransform: 
 
-../libft/libft.h
-stdlib.h
--
-string.h
--
-unistd.h
--
-fcntl.h
--
-
 /Users/rrayne/ft_printf/includes/ft_printf.h
 stdio.h
 -
 stdarg.h
 -
 inttypes.h
--
-math.h
--
-limits.h
 -
 stdlib.h
 -
@@ -45,6 +31,4 @@ fcntl.h
 /Users/rrayne/ft_printf/src/floats.c
 ../includes/ft_printf.h
 /Users/rrayne/ft_printf/includes/ft_printf.h
-libft.h
-/Users/rrayne/ft_printf/src/libft.h
 

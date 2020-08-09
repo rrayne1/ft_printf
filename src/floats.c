@@ -1,19 +1,18 @@
 #include "../includes/ft_printf.h"
 
-int 	ft_infinity(char **s, t_float *f)
+/*int 	ft_infinity(char **s, t_float *f)
 {
 
-	if (!(*s = ft_strnew((f->nb == INFINITY || f->nb == NAN ? 4 : 5))))
+	if (!(*s = ft_strnew((f->nb == INF || f->nb == NAN ? 4 : 5))))
 		return (0);
-	if (f->nb == INFINITY)
+	if (f->nb == INF)
 		*s = "inf";
-	if (f->nb == -INFINITY)
+	if (f->nb == -NINF)
 		*s = "-inf";
-	if (f->nb == NAN)
-		*s = "nan";
+	//if (f->nb == NAN)
+	//	*s = "nan";
 	return (ft_strlen(*s));
-
-}
+}*/
 
 double 	ft_modulo(long double nb, int *size)
 {
@@ -44,23 +43,19 @@ char*	ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-#include "libft.h"
-
-char	*ft_ditoa(int n, t_flags *tFlags)
+char	*ft_ditoa(intmax_t n)
 {
 	int				len;
 	char			*num;
 	int				i;
-	unsigned int	nb;
+	uintmax_t		nb;
 
-	((n > 0) ? (nb = (unsigned int)n) :\
-	(nb = (unsigned int)(-n)));
+	((n > 0) ? (nb = (uintmax_t)n) :\
+	(nb = (uintmax_t)(-n)));
 	len = ft_getlen(nb);
 	i = len - 1;
 	if (!(num = (char *)malloc(sizeof(char) * len + 1)))
 		return (0);
-	if (nb >= 0 && tFlags->neg == 1)
-		num[0] = '-';
 	if (n == 0)
 		num[0] = '0';
 	while (nb != 0)
@@ -80,10 +75,10 @@ int	ft_full(t_float *f, t_flags *tFlags)
 	char 	*s;
 	intmax_t tmp;
 
-//	if (f->nb == INFINITY || f->nb == -INFINITY || f->nb == NAN)
+	//if (f->nb == INF || f->nb == NINF /*|| f->nb == NAN*/)
 	//	return (ft_infinity(&s, f));
 	tmp = (intmax_t)f->nb;
-	bf = ft_ditoa(tmp, tFlags);
+	bf = ft_ditoa(tmp);
 	f->nb -= tmp;
 	if (tFlags->prec > 0)
 	{
@@ -95,7 +90,6 @@ int	ft_full(t_float *f, t_flags *tFlags)
 		af = 0;
 	if (!(s = ft_strjoin_free(bf, af)))
 		return (0);
-	tFlags->neg = 0;
 	ft_display_f(s, tFlags);
 	free(s);
 	return (tFlags->total);
@@ -174,21 +168,53 @@ void 	ft_get_fal(t_float *f, long double nb, t_flags *tFlags)
 	}
 }
 
+int 	ldec(t_float *f/*, int feven*/)
+{
+	if (!f->first)
+		return (0);
+	if (f->first == 8)
+		return (1);
+	if (f->first == f->last)
+		return (f->first >= 5 ? 1 : 0);
+	if (f->last > 5)
+		return (1);
+	if (f->last < 5)
+		return (0);
+	return (0);
+}
+
+int		dec(t_float *f, int feven)
+{
+	if (!f->last)
+		return (0);
+	if (f->first == f->last)
+		return (f->first >= 5 && f->size > 1 ? 1 : 0);
+	if (f->last > 5)
+		return (1);
+	if (f->last == 5)
+		return ((feven || f->first == 9) ? 1 : 0);
+	if (f->last < 5)
+		return (0);
+	return (0);
+}
+
 int 	check_precision(t_float *f, t_flags *tFlags)
 {
 	long double		tmp;
-	int 			tsize;
+	int 			feven;
 
-	tsize = 1;
+	//tsize = 1;
 	tmp = f->nb;
-	f->mod = ft_modulo(tmp, &tsize);
-	if ((((int)tmp / (int)f->mod) % 10) == 9)
-		tFlags->count = 1;
+	//f->mod = ft_modulo(tmp, &tsize);
+//	if ((((int)tmp / (int)f->mod) % 10) == 9)
+	//	f->add = 2;
 	tmp -= (int)tmp;
 	get_prec(f, tmp, tFlags);
 	ft_get_fal(f, tmp, tFlags);
-	if (f->type == LDEC)
-		return (0);
+	//if (f->type == LDEC)
+	//	return (0);
+	if ((f->first % 2) == 0)
+		feven = 1;
 	if (!f->type)
 	{
 		if (tFlags->prec == 0 && f->first >= 5 && ((int)f->nb % 2) != 0)
@@ -202,7 +228,7 @@ int 	check_precision(t_float *f, t_flags *tFlags)
 		if (f->last == 9)
 			return (0);
 	}
-	if (f->type > 0)
+/*	if (f->type > 0)
 	{
 		if (!f->last && f->type == DEC)
 			return (0);
@@ -222,7 +248,11 @@ int 	check_precision(t_float *f, t_flags *tFlags)
 			return (0);
 	}
 	else
-		return (!f->type && (f->first != 9 || (f->last % 2) == 0) ? 0 : 1);
+		return (!f->type && (f->first != 9 || (f->last % 2) == 0) ? 0 : 1);*/
+	else if (f->type == DEC)
+		return (dec(f, feven));
+	else if (f->type == LDEC)
+		return (ldec(f/*, feven*/));
 	return (0);
 }
 
@@ -262,7 +292,7 @@ void	ft_full_after(char **af, t_flags *tFlags, t_float *f)
 	i = 0;
 	if (f->nb < 0)
 		f->nb = -f->nb;
-	if (tFlags->prec > 0)
+	if (tFlags->prec > 0 && (tFlags->hash = 0) == 0)
 		(*af)[i++] = '.';
 	tFlags->total += 1;
 	j = 0;

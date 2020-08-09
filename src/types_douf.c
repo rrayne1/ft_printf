@@ -72,7 +72,8 @@ int 	type_f(va_list ft_printf_list, t_flags *tFlags)
 									va_arg(ft_printf_list, long double) :\
 									va_arg(ft_printf_list, double));
 	size = 1;
-	if (1.0 / f->nb == -1.0 / 0.0&& size--) {
+	if ((1.0 / f->nb == -1.0 / 0.0 || f->nb < 0) && size--)
+	{
 		tFlags->neg = 1;
 		f->nb = -f->nb;
 	}

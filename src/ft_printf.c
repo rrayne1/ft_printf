@@ -71,7 +71,7 @@ int			ft_printf(const char *format, ...)
 	return (res);
 }
 
-int 	main(void)
+/*int 	main(void)
 {
 	int a = 0;
 	int b = 0;
@@ -80,7 +80,11 @@ int 	main(void)
 	a = printf("%", 0);
 	printf("\n");
 //	printf("%f\n", c);
-	b = ft_printf("%f", -0.000);
+	//b = ft_printf("%f\n", -0.000);
+	//ft_printf("%Lf\n", 7.5l);
+//	ft_printf("%Lf\n", -7.00036l);
+	ft_printf("{%Lf}",1.42l);
+	//ft_printf("%f\n", 0.000);
 	printf("\n %d %d \n", a, b);
 	return (0);
-}
+}*/
