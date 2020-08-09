@@ -58,8 +58,6 @@ void 	init_float(t_float *f)
 	f->add = 0;
 }
 
-
-
 int 	type_f(va_list ft_printf_list, t_flags *tFlags)
 {
 	t_float 	*f;
