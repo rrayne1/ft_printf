@@ -1851,6 +1851,33 @@ libft/get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/get_next_line.c.s
 .PHONY : libft/get_next_line.c.s
 
+main.o: main.c.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/main.c.s
+.PHONY : main.c.s
+
 src/check.o: src/check.c.o
 
 .PHONY : src/check.o
@@ -1904,6 +1931,33 @@ src/display.s: src/display.c.s
 src/display.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display.c.s
 .PHONY : src/display.c.s
+
+src/display_f.o: src/display_f.c.o
+
+.PHONY : src/display_f.o
+
+# target to build an object file
+src/display_f.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display_f.c.o
+.PHONY : src/display_f.c.o
+
+src/display_f.i: src/display_f.c.i
+
+.PHONY : src/display_f.i
+
+# target to preprocess a source file
+src/display_f.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display_f.c.i
+.PHONY : src/display_f.c.i
+
+src/display_f.s: src/display_f.c.s
+
+.PHONY : src/display_f.s
+
+# target to generate assembly for a file
+src/display_f.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/display_f.c.s
+.PHONY : src/display_f.c.s
 
 src/floats.o: src/floats.c.o
 
@@ -2175,6 +2229,33 @@ src/utils.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/utils.c.s
 .PHONY : src/utils.c.s
 
+src/utils_f.o: src/utils_f.c.o
+
+.PHONY : src/utils_f.o
+
+# target to build an object file
+src/utils_f.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/utils_f.c.o
+.PHONY : src/utils_f.c.o
+
+src/utils_f.i: src/utils_f.c.i
+
+.PHONY : src/utils_f.i
+
+# target to preprocess a source file
+src/utils_f.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/utils_f.c.i
+.PHONY : src/utils_f.c.i
+
+src/utils_f.s: src/utils_f.c.s
+
+.PHONY : src/utils_f.s
+
+# target to generate assembly for a file
+src/utils_f.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/src/utils_f.c.s
+.PHONY : src/utils_f.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2376,12 +2457,18 @@ help:
 	@echo "... libft/get_next_line.o"
 	@echo "... libft/get_next_line.i"
 	@echo "... libft/get_next_line.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... src/check.o"
 	@echo "... src/check.i"
 	@echo "... src/check.s"
 	@echo "... src/display.o"
 	@echo "... src/display.i"
 	@echo "... src/display.s"
+	@echo "... src/display_f.o"
+	@echo "... src/display_f.i"
+	@echo "... src/display_f.s"
 	@echo "... src/floats.o"
 	@echo "... src/floats.i"
 	@echo "... src/floats.s"
@@ -2412,6 +2499,9 @@ help:
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"
+	@echo "... src/utils_f.o"
+	@echo "... src/utils_f.i"
+	@echo "... src/utils_f.s"
 .PHONY : help
 
 

@@ -179,6 +179,10 @@ CMakeFiles/ft_printf.dir/libft/ft_toupper.c.o
 CMakeFiles/ft_printf.dir/libft/get_next_line.c.o
  /Users/rrayne/ft_printf/libft/get_next_line.c
  /Users/rrayne/ft_printf/libft/libft.h
+CMakeFiles/ft_printf.dir/main.c.o
+ /Users/rrayne/ft_printf/includes/ft_printf.h
+ /Users/rrayne/ft_printf/libft/libft.h
+ /Users/rrayne/ft_printf/main.c
 CMakeFiles/ft_printf.dir/src/check.c.o
  /Users/rrayne/ft_printf/includes/ft_printf.h
  /Users/rrayne/ft_printf/libft/libft.h
@@ -187,6 +191,10 @@ CMakeFiles/ft_printf.dir/src/display.c.o
  /Users/rrayne/ft_printf/includes/ft_printf.h
  /Users/rrayne/ft_printf/libft/libft.h
  /Users/rrayne/ft_printf/src/display.c
+CMakeFiles/ft_printf.dir/src/display_f.c.o
+ /Users/rrayne/ft_printf/includes/ft_printf.h
+ /Users/rrayne/ft_printf/libft/libft.h
+ /Users/rrayne/ft_printf/src/display_f.c
 CMakeFiles/ft_printf.dir/src/floats.c.o
  /Users/rrayne/ft_printf/includes/ft_printf.h
  /Users/rrayne/ft_printf/libft/libft.h
@@ -227,3 +235,7 @@ CMakeFiles/ft_printf.dir/src/utils.c.o
  /Users/rrayne/ft_printf/includes/ft_printf.h
  /Users/rrayne/ft_printf/libft/libft.h
  /Users/rrayne/ft_printf/src/utils.c
+CMakeFiles/ft_printf.dir/src/utils_f.c.o
+ /Users/rrayne/ft_printf/includes/ft_printf.h
+ /Users/rrayne/ft_printf/libft/libft.h
+ /Users/rrayne/ft_printf/src/utils_f.c

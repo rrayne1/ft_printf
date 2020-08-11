@@ -1,32 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   numbers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rrayne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/11 14:45:45 by rrayne            #+#    #+#             */
+/*   Updated: 2020/08/11 14:45:47 by rrayne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
-void	ft_get_nb(va_list ft_printf_list, intmax_t *nb, t_flags *tFlags)
+void	ft_get_nb(va_list ft_printf_list, intmax_t *nb, t_flags *flag)
 {
 	*nb = va_arg(ft_printf_list, intmax_t);
-	if (tFlags->type == TYPE_H)
+	if (flag->type == TYPE_H)
 		*nb = (short int)*nb;
-	else if (tFlags->type == TYPE_HH)
+	else if (flag->type == TYPE_HH)
 		*nb = (char)*nb;
-	else if(tFlags->type == 3)
+	else if (flag->type == 3)
 		*nb = (long int)*nb;
-	else if (tFlags->type == TYPE_LL)
+	else if (flag->type == TYPE_LL)
 		*nb = (long long int)*nb;
-	else if (tFlags->type == 0)
+	else if (flag->type == 0)
 		*nb = (int)*nb;
 }
 
-void	ft_get_nb_u(va_list ft_printf_list, uintmax_t *nb, t_flags *tFlags)
+void	ft_get_nb_u(va_list ft_printf_list, uintmax_t *nb, t_flags *flag)
 {
 	*nb = va_arg(ft_printf_list, uintmax_t);
-	if (tFlags->type == TYPE_H)
+	if (flag->type == TYPE_H)
 		*nb = (unsigned short int)*nb;
-	else if (tFlags->type == TYPE_HH)
+	else if (flag->type == TYPE_HH)
 		*nb = (unsigned char)*nb;
-	else if(tFlags->type == TYPE_L)
+	else if (flag->type == TYPE_L)
 		*nb = (unsigned long int)*nb;
-	else if (tFlags->type == TYPE_LL)
+	else if (flag->type == TYPE_LL)
 		*nb = (unsigned long long int)*nb;
-	else if (tFlags->type == 0)
+	else if (flag->type == 0)
 		*nb = (unsigned int)*nb;
 }
 
@@ -58,7 +70,7 @@ void	ft_get_size_u(uintmax_t nb, uintmax_t length, int *size)
 	}
 }
 
-void 	ft_putnbr_base(uintmax_t nb, char *str, uintmax_t length)
+void	ft_putnbr_base(uintmax_t nb, char *str, uintmax_t length)
 {
 	if (nb >= length)
 		ft_putnbr_base(nb / length, str, length);

@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rrayne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/11 14:45:28 by rrayne            #+#    #+#             */
+/*   Updated: 2020/08/11 14:54:23 by rrayne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
-int 		start(va_list ft_printf_list, char **format)
+int		start(va_list args, char **format)
 {
-	t_flags		*tFlags;
-	int tres;
+	t_flags		*flag;
+	int			tres;
 
-	tFlags = (t_flags *)malloc(sizeof(t_flags));
-	init_flags(tFlags);
-	while(tFlags->count == 0)
+	flag = (t_flags *)malloc(sizeof(t_flags));
+	init_flags(flag);
+	while (flag->count == 0)
 	{
-        check_flags(format, tFlags);
-        check_types(format, tFlags);
-        check_format(ft_printf_list, format, tFlags);
-        (*format)++;
-    }
-	tres = tFlags->total;
-	free(tFlags);
+		check_flags(format, flag);
+		check_types(format, flag);
+		check_format(args, format, flag);
+		(*format)++;
+	}
+	tres = flag->total;
+	free(flag);
 	return (tres);
 }
 
@@ -46,45 +58,27 @@ int		check_val(char *str)
 	return (0);
 }
 
-int			ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
-	va_list 	ft_printf_list;
-	int 		res;
-	char 		*str;
+	va_list		args;
+	int			res;
+	char		*str;
 
 	res = 0;
-	va_start(ft_printf_list, format);
+	va_start(args, format);
 	str = (char *)format;
 	while (*str != 0)
 	{
 		if (*str == '%')
 		{
 			str++;
-			if(!(check_val(str)))
+			if (!(check_val(str)))
 				return (0);
-			res += start(ft_printf_list, &str);
+			res += start(args, &str);
 		}
 		else
 			res += ft_print_str(&str);
 	}
-	va_end(ft_printf_list);
+	va_end(args);
 	return (res);
 }
-
-/*int 	main(void)
-{
-	int a = 0;
-	int b = 0;
-	//int a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12;
-
-	a = printf("%", 0);
-	printf("\n");
-//	printf("%f\n", c);
-	//b = ft_printf("%f\n", -0.000);
-	//ft_printf("%Lf\n", 7.5l);
-//	ft_printf("%Lf\n", -7.00036l);
-	ft_printf("{%Lf}",1.42l);
-	//ft_printf("%f\n", 0.000);
-	printf("\n %d %d \n", a, b);
-	return (0);
-}*/

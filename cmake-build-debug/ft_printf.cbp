@@ -282,10 +282,16 @@
 		<Unit filename="/Users/rrayne/ft_printf/libft/libft.h">
 			<Option target="ft_printf"/>
 		</Unit>
+		<Unit filename="/Users/rrayne/ft_printf/main.c">
+			<Option target="ft_printf"/>
+		</Unit>
 		<Unit filename="/Users/rrayne/ft_printf/src/check.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/rrayne/ft_printf/src/display.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/rrayne/ft_printf/src/display_f.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/rrayne/ft_printf/src/floats.c">
@@ -316,6 +322,9 @@
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/rrayne/ft_printf/src/utils.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/rrayne/ft_printf/src/utils_f.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/rrayne/ft_printf/CMakeLists.txt">

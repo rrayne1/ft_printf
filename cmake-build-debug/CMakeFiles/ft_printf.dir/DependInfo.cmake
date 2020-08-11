@@ -68,8 +68,10 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/rrayne/ft_printf/libft/ft_tolower.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/libft/ft_tolower.c.o"
   "/Users/rrayne/ft_printf/libft/ft_toupper.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/libft/ft_toupper.c.o"
   "/Users/rrayne/ft_printf/libft/get_next_line.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/libft/get_next_line.c.o"
+  "/Users/rrayne/ft_printf/main.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/main.c.o"
   "/Users/rrayne/ft_printf/src/check.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/check.c.o"
   "/Users/rrayne/ft_printf/src/display.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/display.c.o"
+  "/Users/rrayne/ft_printf/src/display_f.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/display_f.c.o"
   "/Users/rrayne/ft_printf/src/floats.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/floats.c.o"
   "/Users/rrayne/ft_printf/src/ft_printf.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/ft_printf.c.o"
   "/Users/rrayne/ft_printf/src/numbers.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/numbers.c.o"
@@ -80,6 +82,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/rrayne/ft_printf/src/types_douf.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/types_douf.c.o"
   "/Users/rrayne/ft_printf/src/types_scp.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/types_scp.c.o"
   "/Users/rrayne/ft_printf/src/utils.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/utils.c.o"
+  "/Users/rrayne/ft_printf/src/utils_f.c" "/Users/rrayne/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/src/utils_f.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
