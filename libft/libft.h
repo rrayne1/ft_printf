@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrayne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: maria <maria@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 17:59:26 by rrayne            #+#    #+#             */
-/*   Updated: 2020/02/15 20:09:40 by rrayne           ###   ########.fr       */
+/*   Updated: 2020/08/12 16:22:27 by maria            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <inttypes.h>
 # define BUFF_SIZE 5000
 
 void				*ft_memset(void *s, int c, size_t n);

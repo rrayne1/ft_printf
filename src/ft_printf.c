@@ -82,3 +82,13 @@ int		ft_printf(const char *format, ...)
 	va_end(args);
 	return (res);
 }
+
+int main(void)
+{
+	char *str = "hello";
+	int a;
+
+	a = ft_printf("%s\n", str);
+	ft_printf("%d\n", a);
+	return (0);
+}

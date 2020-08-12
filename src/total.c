@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   total.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrayne <rrayne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maria <maria@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 14:46:20 by rrayne            #+#    #+#             */
-/*   Updated: 2020/08/11 22:56:34 by rrayne           ###   ########.fr       */
+/*   Updated: 2020/08/12 16:43:55 by maria            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	total_str(char *s, size_t *len, t_flags *flag)
 	if (flag->width > 0)
 	{
 		flag->width -= *len;
-		flag->total = flag->width + *len;
+		flag->total = flag->width;
 	}
+	flag->total += *len;
 }
 
 void	total_dit(intmax_t nb, int size, t_flags *flag)
