@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_x.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrayne <rrayne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maria <maria@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 14:46:32 by rrayne            #+#    #+#             */
-/*   Updated: 2020/08/11 22:56:39 by rrayne           ###   ########.fr       */
+/*   Updated: 2020/08/12 17:01:21 by maria            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	ft_display_precision(t_flags *flag, char *cont)
 
 void	ft_display_width(t_flags *flag, char *cont)
 {
-	if (!flag->minus && !flag->hash && !flag->zero)
+	if (!flag->minus && !flag->hash && flag->zero)
 		ft_print_width(flag);
-	if (!flag->minus && flag->zero)
+	if (!flag->minus && !flag->zero)
 		ft_print_width(flag);
 	if (flag->hash)
 		ft_write(cont, 2);
-	if (!flag->minus && (flag->hash || flag->prec < -1) && !flag->zero)
+	if (!flag->minus && (flag->hash || flag->prec < -1) && flag->zero)
 		ft_print_width(flag);
 }
 
@@ -54,7 +54,7 @@ void	ft_display_x(uintmax_t nb, int *size, t_flags *flag, char *base)
 	width = 0;
 	cont = ft_strchr(base, 'a') ? "0x" : "0X";
 	if (flag->prec > 0)
-		flag->zero = 1;
+		flag->zero = 0;
 	check_zero(nb, size, flag);
 	ft_precision(flag, *size);
 	if (flag->prec > 0)

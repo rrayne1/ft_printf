@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types_scp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrayne <rrayne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maria <maria@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 14:46:57 by rrayne            #+#    #+#             */
-/*   Updated: 2020/08/11 22:56:36 by rrayne           ###   ########.fr       */
+/*   Updated: 2020/08/12 17:04:10 by maria            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int		type_s(va_list args, t_flags *flag)
 		len = 6;
 	}
 	total_str(s, &len, flag);
-	if (flag->minus == 1 && (flag->zero = 1))
+	if (flag->minus && (flag->zero = 0))
 		ft_write(s, len);
 	while (width++ < flag->width)
-		ft_write((flag->zero == 0 ? "0" : " "), 1);
+		ft_write((flag->zero ? "0" : " "), 1);
 	if (!flag->minus)
 		ft_write(s, len);
 	flag->count += 1;
@@ -45,7 +45,7 @@ int		type_c(va_list args, t_flags *flag)
 	width = 0;
 	c = va_arg(args, int);
 	flag->total = 1;
-	if (flag->minus == 1)
+	if (flag->minus)
 		ft_write(&c, 1);
 	while (width < (flag->width - 1))
 	{

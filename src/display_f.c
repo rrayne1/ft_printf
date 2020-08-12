@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_f.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrayne <rrayne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maria <maria@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 14:56:22 by rrayne            #+#    #+#             */
-/*   Updated: 2020/08/11 15:33:43 by rrayne           ###   ########.fr       */
+/*   Updated: 2020/08/12 16:57:55 by maria            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,13 @@ void		check_flags_f(t_flags *flag)
 		flag->width--;
 	if (flag->plus || flag->space || flag->neg)
 		flag->width--;
-	if (flag->zero == 0)
+	if (flag->zero)
 		flag->prec = 0;
 	if (!flag->neg && flag->plus && flag->space)
 		flag->space = 0;
 	if (flag->minus)
-		flag->zero = 1;
-	if (flag->neg == 1)
+		flag->zero = 0;
+	if (flag->neg)
 		flag->total += 1;
 }
 
@@ -111,17 +111,17 @@ void		ft_display_f(char *nb, t_flags *flag)
 {
 	flag->width -= ft_strlen(nb);
 	check_flags_f(flag);
-	if (flag->zero == 0)
+	if (flag->zero)
 		ft_print_sign(flag);
-	if (flag->minus == 0)
+	if (!flag->minus)
 		ft_print_width(flag);
-	if (flag->zero == 1)
+	if (!flag->zero)
 		ft_print_sign(flag);
 	if (flag->width > 0)
 		flag->total -= flag->width;
 	ft_write(nb, ft_strlen(nb));
 	if (flag->hash && flag->prec == 0)
 		ft_write(".", 1);
-	if (flag->minus == 1 && flag->width > 0)
+	if (flag->minus && flag->width > 0)
 		ft_print_width(flag);
 }

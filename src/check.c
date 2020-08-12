@@ -16,7 +16,7 @@ void	init_flags(t_flags *flag)
 {
 	flag->type = 0;
 	flag->width = 0;
-	flag->zero = 1;
+	flag->zero = 0;
 	flag->hash = 0;
 	flag->minus = 0;
 	flag->plus = 0;
@@ -52,7 +52,7 @@ void	check_flags(char **format, t_flags *flag)
 	if (*(*format) == '-')
 		flag->minus = 1;
 	if (*(*format) == '0' && *(*format - 1) != '.')
-		flag->zero = 0;
+		flag->zero = 1;
 	if (*(*format) == '#')
 		flag->hash = 1;
 	if (*(*format) == '.' && ft_isdigit((*(*format + 1))) == 0)

@@ -30,8 +30,8 @@ int		type_d(va_list args, t_flags *flag)
 		flag->total += 1;
 	if (flag->plus && flag->space)
 		flag->space = 0;
-	if (flag->minus && flag->zero == 0)
-		flag->zero = 1;
+	if (flag->minus && flag->zero)
+		flag->zero = 0;
 	if (flag->prec > 0)
 		flag->zero = 1;
 	ft_display_d(nb, size, flag);
@@ -74,8 +74,8 @@ int		type_o(va_list args, t_flags *flag)
 	ft_get_nb_u(args, &nb, flag);
 	size = 0;
 	ft_get_size_u(nb, 8, &size);
-	if ((flag->minus && flag->zero == 0) || flag->prec > 0)
-		flag->zero = 1;
+	if ((flag->minus && flag->zero) || flag->prec > 0)
+		flag->zero = 0;
 	if (flag->prec > 0 && nb == 0)
 		flag->hash = 0;
 	if (flag->hash)
@@ -104,8 +104,8 @@ int		type_u(va_list args, t_flags *flag)
 	if (flag->width != 0)
 		flag->width -= size;
 	if ((flag->prec > 0 && flag->width) || \
-			(!flag->zero && flag->minus))
-		flag->zero = 1;
+			(flag->zero && flag->minus))
+		flag->zero = 0;
 	ft_display_u(nb, size, flag);
 	flag->count += 1;
 	return (flag->total);

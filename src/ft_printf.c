@@ -88,7 +88,7 @@ int main(void)
 	char *str = "hello";
 	int a;
 
-	a = ft_printf("%s\n", str);
+	a = ft_printf("%.Lf\n", 0.039l);
 	ft_printf("%d\n", a);
 	return (0);
 }

@@ -93,8 +93,6 @@ void		ft_get_fal(t_float *f, long double nb, t_flags *flag)
 
 int			ldec(t_float *f)
 {
-	//if (f->add)
-	//	return (1);
 	if (f->first == 8 || f->last == 8)
 		return (1);
 	if (!f->first)
